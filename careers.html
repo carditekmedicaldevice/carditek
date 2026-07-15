@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Carditek Medical Devices</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#005B9A; --blue-dark:#004477; --blue-light:#1A7FC1;
+  --cyan:#00A3C4; --cyan-light:#E6F7FB;
+  --green:#00866A; --green-light:#E6F5F2;
+  --white:#FFFFFF; --bg:#F5F8FC; --bg2:#EDF3FA;
+  --text:#1A2B3C; --text2:#4A6480; --text3:#7A96B0;
+  --border:#D4E3F0; --shadow:0 2px 16px rgba(0,91,154,0.08);
+  --shadow-md:0 4px 28px rgba(0,91,154,0.12);
+  --radius:10px; --radius-lg:16px;
+  --font-head:'Playfair Display',Georgia,serif;
+  --font-body:'Nunito Sans',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:var(--font-body);font-weight:400;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue-light);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(10px);height:70px;display:flex;align-items:center;padding:0 5vw;gap:2rem;box-shadow:0 1px 8px rgba(0,91,154,0.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.logo-placeholder{width:42px;height:42px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.04em;text-align:center;line-height:1.3;padding:4px}
+.nav-brand{display:flex;flex-direction:column;line-height:1.2}
+.nav-brand-main{font-size:1.15rem;font-weight:700;color:var(--blue)}
+.nav-brand-sub{font-size:0.62rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.nav-links{display:flex;gap:0.2rem;list-style:none;margin-left:auto;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text2);font-size:0.84rem;font-weight:600;padding:0.4rem 0.85rem;border-radius:6px;transition:all 0.2s}
+.nav-links a:hover{color:var(--blue);background:var(--bg2)}
+.nav-links .nav-cta{background:var(--blue);color:white!important;padding:0.45rem 1.1rem;border-radius:6px;margin-left:0.5rem}
+.nav-links .nav-cta:hover{background:var(--blue-dark)!important}
+.nav-active{color:var(--blue)!important;background:var(--bg2)!important}
+
+/* HERO */
+.careers-hero{margin-top:70px;background:var(--blue);padding:70px 5vw 60px;position:relative;overflow:hidden}
+.careers-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E");opacity:1}
+.hero-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:0.35rem 1rem;border-radius:100px;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:1.5rem}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:#1DB87A;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3.2rem);color:white;font-weight:600;line-height:1.15;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:#7DD8F0}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.78);max-width:580px;line-height:1.75}
+.hero-ecg{position:absolute;bottom:0;left:0;right:0;height:40px;opacity:0.12}
+
+/* SECTION */
+.section{padding:70px 5vw}
+.section-alt{background:var(--bg)}
+.inner{max-width:1160px;margin:0 auto}
+.sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.7rem;display:flex;align-items:center;gap:8px}
+.sec-label::before{content:'';width:24px;height:2px;background:var(--cyan);flex-shrink:0}
+.sec-title{font-family:var(--font-head);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:600;color:var(--text);line-height:1.2;margin-bottom:1rem}
+.sec-title em{font-style:italic;color:var(--blue)}
+.sec-body{color:var(--text2);max-width:620px;font-size:0.97rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+/* WHY JOIN */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem}
+.why-card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.8rem;transition:all 0.3s;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:transparent;transition:background 0.3s}
+.why-card:hover{border-color:var(--blue-light);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.why-card:hover::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.why-icon{width:48px;height:48px;border-radius:10px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.why-icon svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.why-title{font-size:0.97rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.why-desc{font-size:0.84rem;color:var(--text2);line-height:1.7}
+
+/* OPENINGS */
+.openings-grid{display:flex;flex-direction:column;gap:1rem;margin-top:2.5rem}
+.job-card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 2.2rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;transition:all 0.3s}
+.job-card:hover{border-color:var(--blue-light);box-shadow:var(--shadow-md);transform:translateX(4px)}
+.job-dept{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.5rem}
+.job-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.job-desc{font-size:0.875rem;color:var(--text2);line-height:1.65;margin-bottom:0.8rem}
+.job-tags{display:flex;gap:0.5rem;flex-wrap:wrap}
+.job-tag{font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:4px;letter-spacing:0.06em}
+.tag-full{background:#EEF5FF;color:var(--blue)}
+.tag-bengaluru{background:var(--cyan-light);color:#006E8A}
+.tag-exp{background:var(--green-light);color:var(--green)}
+.tag-remote{background:#FFF8E6;color:#8A6000}
+.job-apply-btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:white;padding:0.65rem 1.4rem;border-radius:7px;text-decoration:none;font-size:0.84rem;font-weight:700;white-space:nowrap;transition:all 0.2s;flex-shrink:0}
+.job-apply-btn:hover{background:var(--blue-dark);transform:translateY(-1px)}
+
+/* NO OPENINGS NOTICE */
+.notice-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 2.2rem;display:flex;gap:1.2rem;align-items:flex-start;margin-top:1rem}
+.notice-icon{width:40px;height:40px;border-radius:8px;background:white;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.notice-icon svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:1.6}
+.notice-text{font-size:0.88rem;color:var(--text2);line-height:1.7}
+.notice-text strong{color:var(--text);display:block;margin-bottom:0.3rem;font-size:0.95rem}
+
+/* APPLY FORM */
+.apply-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.apply-info{display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem}
+.apply-info-item{display:flex;gap:1rem;align-items:flex-start}
+.a-icon{width:42px;height:42px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.a-icon svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.a-label{font-size:0.7rem;font-weight:700;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:3px}
+.a-val{font-size:0.9rem;color:var(--text)}
+.apply-form{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;box-shadow:var(--shadow)}
+.apply-form h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:1.5rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.f-field{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem}
+.f-field label{font-size:0.7rem;font-weight:700;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
+.f-field input,.f-field select,.f-field textarea{border:1px solid var(--border);border-radius:7px;padding:0.65rem 0.9rem;font-family:var(--font-body);font-size:0.875rem;color:var(--text);background:var(--bg);outline:none;transition:border-color 0.2s;resize:none}
+.f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:var(--blue);background:white}
+.f-field select option{background:white}
+.file-upload{border:2px dashed var(--border);border-radius:7px;padding:1.2rem;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg)}
+.file-upload:hover{border-color:var(--blue);background:var(--bg2)}
+.file-upload-text{font-size:0.82rem;color:var(--text3)}
+.file-upload-text span{color:var(--blue);font-weight:700}
+.btn-submit{width:100%;background:var(--blue);color:white;border:none;border-radius:7px;padding:0.85rem;font-family:var(--font-body);font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem}
+.btn-submit:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:var(--shadow)}
+.form-success{display:none;background:var(--green-light);border:1px solid #00866A;border-radius:7px;padding:1rem;text-align:center;color:var(--green);font-weight:600;font-size:0.9rem;margin-top:1rem}
+
+/* FOOTER FULL */
+footer {
+  background: var(--text);
+  color: rgba(255,255,255,0.7);
+  padding: 3.5rem 5vw 2rem;
+}
+.footer-inner-full {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1.5rem;
+}
+.footer-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.7rem;
+}
+.footer-tagline {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.65);
+}
+.footer-contact-item {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.55);
+}
+.footer-col-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
+}
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-links-list a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.84rem;
+  transition: color 0.2s;
+}
+.footer-links-list a:hover { color: #7DD8F0; }
+.footer-bottom-full {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+}
+
+@media(max-width:960px){
+  .footer-inner-full {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-bottom-full {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.4rem;
+  }
+}
+
+@media(max-width:960px){
+  .nav-links{display:none}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .apply-grid{grid-template-columns:1fr;gap:2.5rem}
+  .f-row{grid-template-columns:1fr}
+  .job-card{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .why-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+ 
+<nav>
+  <a class="nav-logo" href="#">
+    <!-- LOGO: Replace logo-placeholder div with your <img> tag -->
+    <img src="images/logo.png" 
+     alt="Carditek" 
+     style="height:42px; width:auto;">
+    <div class="nav-brand">
+      <span class="nav-brand-main">Carditek</span>
+      <span class="nav-brand-sub">Medical Devices PVT LTD</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="carditek_website.html#about">About</a></li>
+    <li><a href="carditek_website.html#features">Technology</a></li>
+    <li><a href="carditek_website.html#clinical">Clinical</a></li>
+    <li><a href="carditek_website.html#awards">Awards</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="careers.html" class="nav-active">Careers</a></li>
+    <li><a href="carditek_website.html#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="careers-hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-tag-dot"></span>We are hiring</div>
+    <h1 class="hero-title">Build the Future of<br><em>Cardiac Technology</em></h1>
+    <p class="hero-sub">Join a team that is redefining how the world diagnoses heart disease — from Koramangala, Bengaluru to hospitals across India and the world.</p>
+  </div>
+  <svg class="hero-ecg" viewBox="0 0 1440 40" preserveAspectRatio="none">
+    <polyline fill="none" stroke="white" stroke-width="1.5"
+      points="0,20 80,20 95,20 102,6 109,34 114,20 130,20 160,20 175,20 182,4 189,36 193,20 210,20 240,20 255,20 262,5 269,35 273,20 290,20 320,20 335,20 342,6 349,34 353,20 370,20 400,20 415,20 422,4 429,36 433,20 450,20 480,20 495,20 502,5 509,35 513,20 530,20 560,20 575,20 582,6 589,34 593,20 610,20 640,20 655,20 662,4 669,36 673,20 690,20 720,20 735,20 742,5 749,35 753,20 770,20 800,20 815,20 822,6 829,34 833,20 850,20 880,20 895,20 902,4 909,36 913,20 930,20 960,20 975,20 982,5 989,35 993,20 1010,20 1040,20 1055,20 1062,6 1069,34 1073,20 1090,20 1120,20 1135,20 1142,4 1149,36 1153,20 1170,20 1200,20 1215,20 1222,5 1229,35 1233,20 1250,20 1280,20 1295,20 1302,6 1309,34 1313,20 1330,20 1360,20 1375,20 1382,4 1389,36 1393,20 1410,20 1440,20"/>
+  </svg>
+</div>
+
+<!-- WHY JOIN -->
+<section class="section">
+  <div class="inner">
+    <div class="sec-label reveal">Why Carditek</div>
+    <h2 class="sec-title reveal d1">Work on Technology That<br><em>Saves Lives</em></h2>
+    <p class="sec-body reveal d2">We are a passionate team of engineers, clinicians, and innovators working on one of the most impactful problems in medicine — making cardiac diagnosis accurate, accessible, and intelligent.</p>
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="why-title">Award-Winning Innovation</div>
+        <div class="why-desc">13 national grants and awards including BIRAC, IEEE, and NXP India. Work on technology that is already recognised at the highest levels.</div>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="why-title">Real Clinical Impact</div>
+        <div class="why-desc">Your work goes into actual hospitals — Sri Jayadeva, Madras Medical Mission, and IISc. Real patients. Real outcomes. Not just prototypes.</div>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="why-title">Global Research Network</div>
+        <div class="why-desc">Collaborations with Manchester University UK, IIT Delhi, and IISc Bangalore. Opportunity to contribute to peer-reviewed publications.</div>
+      </div>
+      <div class="why-card reveal d1">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="why-title">Small Team, Big Ownership</div>
+        <div class="why-desc">Work directly with founders and senior engineers. No bureaucracy. Your ideas get implemented. You own meaningful problems from day one.</div>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="why-title">Cutting-Edge Tech Stack</div>
+        <div class="why-desc">AI, cloud architecture, signal processing, embedded systems, and medical-grade hardware. If you love hard engineering problems, this is the place.</div>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="why-title">Mission-Driven Culture</div>
+        <div class="why-desc">We genuinely believe in early heart disease detection for everyone. Every team member understands and is motivated by the human impact of their work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT OPENINGS -->
+<section class="section section-alt" id="openings">
+  <div class="inner">
+    <div class="sec-label reveal">Open Positions</div>
+    <h2 class="sec-title reveal d1">Current <em>Openings</em></h2>
+    <p class="sec-body reveal d2">We are growing. If you are passionate about cardiac technology and want to work on something that genuinely matters, we would love to hear from you.</p>
+
+    <div class="openings-grid">
+
+      <!-- JOB 1 -->
+      <div class="job-card reveal d1">
+        <div>
+          <div class="job-dept">Engineering — Hardware</div>
+          <div class="job-title">Embedded Systems Engineer</div>
+          <div class="job-desc">Design and develop firmware for our wearable ECG patch devices. Work on real-time signal acquisition, low-power embedded systems, and BLE/Wi-Fi connectivity for medical-grade hardware.</div>
+          <div class="job-tags">
+            <span class="job-tag tag-full">Full-time</span>
+            <span class="job-tag tag-bengaluru">Bengaluru</span>
+            <span class="job-tag tag-exp">2–5 years</span>
+          </div>
+        </div>
+        <a href="#apply" class="job-apply-btn">Apply Now →</a>
+      </div>
+
+      <!-- JOB 2 -->
+      <div class="job-card reveal d2">
+        <div>
+          <div class="job-dept">Engineering — AI/ML</div>
+          <div class="job-title">Machine Learning Engineer — Cardiac Signal Processing</div>
+          <div class="job-desc">Build and improve AI algorithms for ECG beat detection, rhythm classification, and ischemia prediction using high-frequency cardiac data. Experience with time-series models and clinical data a strong plus.</div>
+          <div class="job-tags">
+            <span class="job-tag tag-full">Full-time</span>
+            <span class="job-tag tag-bengaluru">Bengaluru</span>
+            <span class="job-tag tag-exp">3+ years</span>
+          </div>
+        </div>
+        <a href="#apply" class="job-apply-btn">Apply Now →</a>
+      </div>
+
+      <!-- JOB 3 -->
+      <div class="job-card reveal d3">
+        <div>
+          <div class="job-dept">Clinical Affairs</div>
+          <div class="job-title">Clinical Research Associate</div>
+          <div class="job-desc">Support pilot studies and clinical trials at partner hospitals. Coordinate with cardiologists, collect and manage ECG data, assist in regulatory documentation and ethics submissions.</div>
+          <div class="job-tags">
+            <span class="job-tag tag-full">Full-time</span>
+            <span class="job-tag tag-bengaluru">Bengaluru</span>
+            <span class="job-tag tag-exp">1–3 years</span>
+          </div>
+        </div>
+        <a href="#apply" class="job-apply-btn">Apply Now →</a>
+      </div>
+
+      <!-- JOB 4 -->
+      <div class="job-card reveal d1">
+        <div>
+          <div class="job-dept">Engineering — Software</div>
+          <div class="job-title">Full Stack Developer — Medical Portal</div>
+          <div class="job-desc">Build and maintain the Sydäntek cloud portal used by doctors to view ECG reports, manage patients, and receive real-time alerts. React frontend, Node/Python backend, cloud infrastructure on AWS/GCP.</div>
+          <div class="job-tags">
+            <span class="job-tag tag-full">Full-time</span>
+            <span class="job-tag tag-bengaluru">Bengaluru</span>
+            <span class="job-tag tag-remote">Hybrid</span>
+            <span class="job-tag tag-exp">2–4 years</span>
+          </div>
+        </div>
+        <a href="#apply" class="job-apply-btn">Apply Now →</a>
+      </div>
+
+    </div>
+
+    <!-- Notice for spontaneous applications -->
+    <div class="notice-box reveal d2">
+      <div class="notice-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="notice-text">
+        <strong>Don't see a role that fits?</strong>
+        We are always open to exceptional talent. Send your CV and a short note about what you'd like to work on to <strong>sydantek@carditek.com</strong> — we read every application personally.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPLY FORM -->
+<section class="section" id="apply">
+  <div class="inner">
+    <div class="apply-grid">
+      <div>
+        <div class="sec-label reveal">Apply</div>
+        <h2 class="sec-title reveal d1">Send Us Your<br><em>Application</em></h2>
+        <p class="sec-body reveal d2">Fill in the form or email us directly. We review every application and respond within 5 working days.</p>
+        <div class="apply-info reveal d2">
+          <div class="apply-info-item">
+            <div class="a-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><span class="a-label">Email us directly</span><span class="a-val">sydantek@carditek.com</span></div>
+          </div>
+          <div class="apply-info-item">
+            <div class="a-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><span class="a-label">Location</span><span class="a-val">No.81, 4th Block, 7th Cross,<br>Koramangala, Bengaluru – 560034</span></div>
+          </div>
+          <div class="apply-info-item">
+            <div class="a-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><span class="a-label">Response time</span><span class="a-val">Within 5 working days</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal d2">
+        <div class="apply-form">
+          <h3>Application Form</h3>
+          <div class="f-row">
+            <div class="f-field"><label>First Name</label><input type="text" placeholder="Your first name"></div>
+            <div class="f-field"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+          </div>
+          <div class="f-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+          <div class="f-field"><label>Phone Number</label><input type="tel" placeholder="+91 ..."></div>
+          <div class="f-field">
+            <label>Position Applying For</label>
+            <select>
+              <option value="">Select a role...</option>
+              <option>Embedded Systems Engineer</option>
+              <option>ML Engineer — Cardiac Signal Processing</option>
+              <option>Clinical Research Associate</option>
+              <option>Full Stack Developer — Medical Portal</option>
+              <option>Other / Spontaneous Application</option>
+            </select>
+          </div>
+          <div class="f-field"><label>Years of Experience</label><input type="text" placeholder="e.g. 3 years"></div>
+          <div class="f-field"><label>Cover Note</label><textarea rows="4" placeholder="Tell us why you want to join Carditek and what you'd bring to the team..."></textarea></div>
+          <div class="f-field">
+            <label>Upload CV</label>
+            <div class="file-upload" onclick="document.getElementById('cvFile').click()">
+              <input type="file" id="cvFile" style="display:none" accept=".pdf,.doc,.docx">
+              <div class="file-upload-text">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A96B0" stroke-width="1.5" style="margin:0 auto 6px;display:block"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Click to upload</span> your CV (PDF or Word)
+              </div>
+            </div>
+          </div>
+          <button class="btn-submit" onclick="submitApp()">Submit Application →</button>
+          <div class="form-success" id="formSuccess">✓ Application submitted! We will get back to you within 5 working days.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner-full">
+    <div>
+      <div class="footer-brand">Carditek Medical Devices Pvt. Ltd.</div>
+      <div class="footer-tagline">
+        Sydäntek — Taking technology to people.<br>
+        Revolutionizing cardiac diagnosis through wearable AI-enabled ECG technology.
+      </div>
+      <div class="footer-contact-item">
+        No.81, 1st Floor, 4th Block, 7th Cross,
+        Koramangala, Bengaluru – 560034<br>
+        sydantek@carditek.com · +91 86189 58067
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links-list">
+        <li><a href="carditek_website.html#about">About Carditek</a></li>
+        <li><a href="carditek_website.html#features">Technology</a></li>
+        <li><a href="carditek_website.html#clinical">Clinical Applications</a></li>
+        <li><a href="carditek_website.html#awards">Awards &amp; Recognition</a></li>
+        <li><a href="carditek_website.html#patents">Patents</a></li>
+        <li><a href="carditek_website.html#updates">Latest Updates</a></li>
+        <li><a href="carditek_website.html#faq">FAQ</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="carditek_website.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Patents</div>
+      <ul class="footer-links-list">
+        <li><a href="carditek_website.html#patents">#541479 — Wearable ECG Device</a></li>
+        <li><a href="carditek_website.html#patents">#547098 — Compact 12 Lead ECG Patch</a></li>
+        <li><a href="carditek_website.html#patents">#543569 — Fetal ECG Monitoring</a></li>
+      </ul>
+      <div class="footer-col-title" style="margin-top:1.5rem;">Publications</div>
+      <ul class="footer-links-list">
+        <li><a href="carditek_website.html#patents">Heart Rhythm 2021</a></li>
+        <li><a href="carditek_website.html#patents">CONECCT 2022 (×2)</a></li>
+        <li><a href="carditek_website.html#patents">Heart Rhythm 2022</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom-full">
+    <span>© 2017 Carditek Medical Devices Pvt. Ltd. All rights reserved.</span>
+    <span>Bengaluru, Karnataka, India</span>
+  </div>
+</footer>
+
+<script>
+const revEls=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:0.1});
+revEls.forEach(el=>obs.observe(el));
+
+document.getElementById('cvFile').addEventListener('change',function(){
+  const ft=document.querySelector('.file-upload-text');
+  if(this.files[0]) ft.innerHTML='<span style="color:var(--green);font-weight:700">✓ '+this.files[0].name+'</span>';
+});
+
+function submitApp(){
+  document.getElementById('formSuccess').style.display='block';
+  window.scrollTo({top:document.getElementById('formSuccess').offsetTop-100,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
+
+
+T

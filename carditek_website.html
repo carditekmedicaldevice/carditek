@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carditek Medical Devices — Sydäntek ECG System</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   DESIGN TOKENS — MedTech Light Professional
+   Primary: Deep Clinical Blue
+   Accent:  Teal-Cyan (innovation)
+   Surface: Near-white with subtle blue tint
+══════════════════════════════════════════════ */
+:root {
+  --blue:       #0041C2;
+  --blue-dark:  #0091ff;
+  --blue-light: #1A7FC1;
+  --cyan:       #00A3C4;
+  --cyan-light: #E6F7FB;
+  --green:      #00866A;
+  --green-light:#E6F5F2;
+  --white:      #FFFFFF;
+  --bg:         #F5F8FC;
+  --bg2:        #EDF3FA;
+  --text:       #1A2B3C;
+  --text2:      #4A6480;
+  --text3:      #7A96B0;
+  --border:     #D4E3F0;
+  --shadow:     0 2px 16px rgba(0,91,154,0.08);
+  --shadow-md:  0 4px 28px rgba(0,91,154,0.12);
+  --radius:     10px;
+  --radius-lg:  16px;
+  --font-head:  'Playfair Display', Georgia, serif;
+  --font-body:  'Nunito Sans', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+::selection { background: var(--blue); color: #fff; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 3px; }
+img { max-width: 100%; display: block; }
+
+/* ══ NAV ══ */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  height: 70px;
+  display: flex; align-items: center;
+  padding: 0 5vw;
+  gap: 2rem;
+  box-shadow: 0 1px 8px rgba(0,91,154,0.07);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; flex-shrink: 0;
+}
+/* ─── LOGO PLACEHOLDER ───
+   Replace the div.logo-placeholder with:
+   <img src="YOUR_LOGO.png" alt="Carditek" style="height:42px;">
+   ──────────────────────── */
+.logo-placeholder {
+  width: 42px; height: 42px;
+  background: var(--blue);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.04em; text-align: center; line-height: 1.3;
+  padding: 4px;
+}
+.nav-brand {
+  display: flex; flex-direction: column; line-height: 1.2;
+}
+.nav-brand-main {
+  font-size: 1.15rem; font-weight: 700; color: var(--blue);
+  letter-spacing: 0.01em;
+}
+.nav-brand-sub {
+  font-size: 0.62rem; color: var(--text3); letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex; gap: 0.2rem; list-style: none;
+  margin-left: auto; align-items: center;
+}
+.nav-links a {
+  text-decoration: none; color: var(--text2);
+  font-size: 0.84rem; font-weight: 600;
+  padding: 0.4rem 0.85rem; border-radius: 6px;
+  transition: all 0.2s; letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--blue); background: var(--bg2); }
+.nav-links .nav-cta {
+  background: var(--blue); color: white !important;
+  padding: 0.45rem 1.1rem; border-radius: 6px;
+  margin-left: 0.5rem;
+}
+.nav-links .nav-cta:hover { background: var(--blue-dark) !important; }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  margin-left: auto; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--blue); border-radius: 2px; transition: all 0.3s;
+}
+.mobile-menu {
+  display: none; position: fixed; top: 70px; left: 0; right: 0;
+  background: white; border-bottom: 1px solid var(--border);
+  flex-direction: column; padding: 1rem 5vw; gap: 0.5rem;
+  box-shadow: var(--shadow-md); z-index: 199;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  text-decoration: none; color: var(--text); font-size: 0.95rem;
+  font-weight: 600; padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+
+/* ══ HERO SLIDER ══ */
+.hero-slider-wrap {
+  margin-top: 70px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 88vh; min-height: 520px; max-height: 800px;
+  background: var(--bg2);
+  user-select: none;
+}
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.45,0,0.25,1);
+  will-change: transform;
+}
+.slide {
+  min-width: 100%; height: 100%;
+  position: relative; flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ─── SLIDE IMAGE PLACEHOLDERS ───
+   Each .slide-img is where your photo goes.
+   To replace: change background to:
+     background: url('your-image.jpg') center/cover no-repeat;
+   OR add <img> inside .slide-img
+   ──────────────────────────────── */
+.slide-img {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #C8DFF2 0%, #E8F4FC 50%, #D0EAF8 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.slide-img-label {
+  font-size: 1.1rem; font-weight: 600; color: rgba(0,91,154,0.35);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+/* Individual slide bg tints so placeholders look distinct */
+.slide:nth-child(1) .slide-img { background: linear-gradient(135deg,#B8D4EE,#D8EDF9); }
+.slide:nth-child(2) .slide-img { background: linear-gradient(135deg,#C2DCF0,#E0F2FA); }
+.slide:nth-child(3) .slide-img { background: linear-gradient(135deg,#BAD8EC,#D5EBF7); }
+.slide:nth-child(4) .slide-img { background: linear-gradient(135deg,#C0DBF2,#DDF0F8); }
+.slide:nth-child(5) .slide-img { background: linear-gradient(135deg,#B5D5EB,#D2EAF6); }
+.slide:nth-child(6) .slide-img { background: linear-gradient(135deg,#1A2B3C,#2a4060); } /* video slide darker */
+
+.slide-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,68,119,0.72) 0%,
+    rgba(0,68,119,0.4) 45%,
+    rgba(0,0,0,0.05) 100%
+  );
+}
+.slide-content {
+  position: absolute; bottom: 0; left: 0; right: 0; top: 0;
+  display: flex; align-items: flex-end;
+  padding: 4vw 7vw 5vw;
+}
+.slide-text {
+  max-width: 580px;
+  animation: slideTextIn 0.6s 0.2s both;
+}
+@keyframes slideTextIn {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: none; }
+}
+.slide-tag {
+  display: inline-block;
+  background: rgba(0,163,196,0.85);
+  color: white; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.3rem 0.9rem; border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.slide-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  color: white; line-height: 1.2; margin-bottom: 0.8rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.slide-title em { font-style: italic; color: #7DD8F0; }
+.slide-desc {
+  font-size: 0.95rem; color: rgba(255,255,255,0.88);
+  line-height: 1.65; max-width: 440px;
+}
+.slide-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 1.4rem;
+  background: white; color: var(--blue);
+  padding: 0.65rem 1.5rem; border-radius: 6px;
+  text-decoration: none; font-size: 0.84rem; font-weight: 700;
+  letter-spacing: 0.03em; transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.slide-btn:hover { background: var(--cyan); color: white; transform: translateY(-1px); }
+
+/* Video slide */
+.slide-video-wrap {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #0d1e30;
+}
+/* ─── VIDEO PLACEHOLDER ───
+   Replace the video-placeholder div with:
+   <video src="your-video.mp4" autoplay muted loop playsinline
+          style="width:100%;height:100%;object-fit:cover;"></video>
+   ──────────────────────── */
+.video-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1rem;
+  background: linear-gradient(135deg,#0d1e30,#1a3a5c);
+}
+.video-placeholder-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+}
+.video-placeholder-icon svg { width: 28px; height: 28px; fill: white; margin-left: 4px; }
+.video-placeholder p { color: rgba(255,255,255,0.7); font-size: 0.88rem; letter-spacing: 0.08em; }
+.video-placeholder small { color: rgba(255,255,255,0.4); font-size: 0.72rem; }
+
+/* Slider controls */
+.slider-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15); z-index: 10;
+  transition: all 0.2s;
+}
+.slider-arrow:hover { background: white; transform: translateY(-50%) scale(1.08); }
+.slider-arrow svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.slider-prev { left: 1.5rem; }
+.slider-next { right: 1.5rem; }
+.slider-dots {
+  position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 10;
+}
+.slider-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.45); border: none; cursor: pointer;
+  transition: all 0.3s; padding: 0;
+}
+.slider-dot.active { width: 24px; border-radius: 4px; background: white; }
+.slide-counter {
+  position: absolute; top: 1.5rem; right: 2rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.7);
+  font-family: var(--font-body); font-weight: 600;
+  letter-spacing: 0.06em; z-index: 10;
+}
+
+/* ══ SECTION BASE ══ */
+.section { padding: 80px 5vw; }
+.section-alt { background: var(--bg); }
+.section-blue { background: var(--blue); }
+.inner { max-width: 1160px; margin: 0 auto; }
+
+.sec-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 0.7rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.sec-label::before {
+  content: ''; width: 24px; height: 2px; background: var(--cyan);
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 600; color: var(--text); line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.sec-title em { font-style: italic; color: var(--blue); font-weight: 400; }
+.sec-body { color: var(--text2); max-width: 620px; font-size: 0.97rem; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity:1; transform:none; }
+.delay-1 { transition-delay:0.1s; }
+.delay-2 { transition-delay:0.2s; }
+.delay-3 { transition-delay:0.3s; }
+.delay-4 { transition-delay:0.4s; }
+
+/* ══ QUICK STATS BAR ══ */
+.stats-bar {
+  background: var(--blue);
+  padding: 0;
+}
+.stats-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr);
+}
+.stat-item {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-head);
+  font-size: 2.2rem; font-weight: 600; color: #7DD8F0;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem; color: rgba(255,255,255,0.7);
+  margin-top: 0.4rem; letter-spacing: 0.04em;
+}
+
+/* ══ ABOUT ══ */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+.about-img-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4/3;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  position: relative;
+}
+/* ── ABOUT MINI SLIDER ── */
+.about-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  background: var(--bg2);
+}
+
+.about-slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.45, 0, 0.25, 1);
+  will-change: transform;
+}
+
+.about-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.about-slider:hover .about-slide img {
+  transform: scale(1.03);
+}
+
+/* Slide label bottom caption */
+.about-slide-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top,
+    rgba(0, 44, 80, 0.82) 0%,
+    transparent 100%);
+  padding: 2rem 1.2rem 1rem;
+}
+
+.about-slide-caption span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.about-slide-caption small {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+  display: block;
+}
+
+/* Arrows */
+.about-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.about-slider:hover .about-slider-arrow {
+  opacity: 1;
+}
+
+.about-slider-arrow:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.about-slider-arrow svg {
+  width: 16px; height: 16px;
+  stroke: var(--blue);
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-slider-prev { left: 0.7rem; }
+.about-slider-next { right: 0.7rem; }
+
+/* Dots */
+.about-slider-dots {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 1rem;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.about-slider-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.about-slider-dot.active {
+  width: 20px;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Pause indicator */
+.about-paused-badge {
+  position: absolute;
+  top: 0.8rem; right: 0.8rem;
+  background: rgba(0,0,0,0.45);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.08em;
+  display: none;
+  z-index: 10;
+}
+
+.about-slider.paused .about-paused-badge {
+  display: block;
+}
+/* ─── ABOUT IMAGE PLACEHOLDER ───
+   Replace with: <img src="your-device-photo.jpg" style="width:100%;height:100%;object-fit:cover;">
+   ────────────────────────────── */
+.about-img-placeholder {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.8rem; text-align: center; padding: 2rem;
+}
+.about-img-placeholder svg { width: 56px; height: 56px; stroke: var(--blue-light); fill: none; stroke-width: 1; opacity: 0.5; }
+.about-img-placeholder span { font-size: 0.8rem; color: var(--text3); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.about-mission-box {
+  background: var(--blue);
+  border-radius: var(--radius); padding: 1.5rem 1.8rem;
+  margin-top: 1.5rem; margin-bottom: 1.5rem;
+}
+.about-mission-box p {
+  font-family: var(--font-head); font-style: italic;
+  font-size: 1.05rem; color: rgba(255,255,255,0.92); line-height: 1.6;
+}
+.about-points { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+.about-points li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 0.9rem; color: var(--text2); line-height: 1.6;
+}
+.about-points li::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--cyan); flex-shrink: 0; margin-top: 7px;
+}
+.specs-row {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 0.8rem; margin-top: 1.5rem;
+}
+.spec-box {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  text-align: center;
+}
+.spec-val { font-size: 1.2rem; font-weight: 700; color: var(--blue); display: block; }
+.spec-lbl { font-size: 0.72rem; color: var(--text3); margin-top: 3px; display: block; }
+
+/* ══ PRODUCT FEATURES ══ */
+.feat-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; }
+.feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+.feat-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.8rem;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.feat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: transparent;
+  transition: background 0.3s;
+}
+.feat-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.feat-card:hover::before { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+.feat-icon-wrap {
+  width: 50px; height: 50px; border-radius: 10px;
+  background: var(--bg2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.1rem;
+}
+.feat-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; stroke-width: 1.6; }
+.feat-name { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.feat-desc { font-size: 0.84rem; color: var(--text2); line-height: 1.7; }
+.feat-badge {
+  display: inline-block; margin-top: 0.9rem;
+  font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cyan);
+  background: var(--cyan-light); border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+}
+
+/* ══ COMPARISON ══ */
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.comp-card { border-radius: var(--radius-lg); padding: 2.2rem; }
+.comp-old {
+  background: white; border: 1px solid var(--border);
+}
+.comp-new {
+  background: var(--blue); color: white;
+  box-shadow: var(--shadow-md);
+}
+.comp-card-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.comp-old .comp-card-label { color: var(--text3); }
+.comp-new .comp-card-label { color: rgba(255,255,255,0.6); }
+.badge-cross { color: #E05A5A; }
+.badge-check { color: #7DD8F0; }
+.comp-card-title {
+  font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 1.5rem; line-height: 1.3;
+}
+.comp-old .comp-card-title { color: var(--text); }
+.comp-new .comp-card-title { color: white; }
+.comp-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.comp-list li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 0.875rem; line-height: 1.5;
+}
+.comp-old .comp-list li { color: var(--text2); }
+.comp-new .comp-list li { color: rgba(255,255,255,0.85); }
+.comp-list .ic {
+  font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; font-weight: 700;
+}
+.comp-old .ic { color: #E05A5A; }
+.comp-new .ic { color: #7DD8F0; }
+
+/* ══ CLINICAL ══ */
+.clin-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
+.clin-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem;
+  transition: all 0.3s;
+}
+.clin-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow); transform: translateY(-2px); }
+.clin-num {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--cyan); text-transform: uppercase; margin-bottom: 0.7rem;
+}
+.clin-title { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+.clin-body { font-size: 0.875rem; color: var(--text2); line-height: 1.7; }
+.clin-stats {
+  display: flex; gap: 1.2rem; margin-top: 1.2rem;
+  padding-top: 1.2rem; border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.clin-stat-num { font-family: var(--font-head); font-size: 1.6rem; color: var(--blue); font-weight: 600; line-height: 1; }
+.clin-stat-lbl { font-size: 0.7rem; color: var(--text3); margin-top: 3px; }
+
+/* ══ AWARDS ══ */
+.awards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.award-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.3rem 1.5rem;
+  display: flex; gap: 12px; align-items: flex-start;
+  transition: all 0.25s;
+}
+.award-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow); }
+.award-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cyan); flex-shrink: 0; margin-top: 5px;
+}
+.award-card strong { display: block; font-size: 0.84rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+.award-card span { font-size: 0.78rem; color: var(--text3); line-height: 1.4; }
+.hospitals-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2rem; }
+.hospital-chip {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  text-align: center;
+}
+.hospital-chip strong { display: block; font-size: 0.84rem; font-weight: 700; color: var(--text); }
+.hospital-chip small { font-size: 0.73rem; color: var(--cyan); font-weight: 600; }
+
+/* ══ PATENTS ══ */
+.patents-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+.patent-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem;
+  transition: all 0.3s; position: relative;
+}
+.patent-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.patent-number {
+  font-size: 1.3rem; font-weight: 700; color: var(--blue);
+  font-family: 'Courier New', monospace; margin-bottom: 0.3rem;
+}
+.patent-stamp {
+  font-size: 0.68rem; color: var(--text3); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 1rem; display: block;
+}
+.patent-title { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.patent-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.65; }
+
+/* Publications */
+.pub-list { display: flex; flex-direction: column; gap: 0.9rem; }
+.pub-item {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem 1.8rem;
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 1.4rem; align-items: start; transition: all 0.25s;
+}
+.pub-item:hover { border-color: var(--blue-light); box-shadow: var(--shadow); }
+.pub-year {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 0.3rem 0.7rem;
+  font-size: 0.75rem; font-weight: 700; color: var(--blue);
+  white-space: nowrap; align-self: center;
+}
+.pub-title { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.pub-venue { font-size: 0.8rem; color: var(--text3); font-style: italic; }
+
+/* ══ UPDATES ══ */
+.updates-top {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 2rem; gap: 2rem; flex-wrap: wrap;
+}
+.filter-wrap { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filter-btn {
+  background: white; border: 1px solid var(--border);
+  color: var(--text2); padding: 0.38rem 0.9rem; border-radius: 100px;
+  font-size: 0.78rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body); transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--blue); border-color: var(--blue); color: white;
+}
+.admin-toggle-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: white; border: 1px solid var(--border);
+  color: var(--text2); padding: 0.4rem 1rem; border-radius: 6px;
+  font-size: 0.78rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body); transition: all 0.2s;
+}
+.admin-toggle-btn:hover { border-color: var(--blue); color: var(--blue); }
+.admin-panel {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem;
+  margin-bottom: 2rem; display: none;
+}
+.admin-panel.open { display: block; }
+.admin-panel h4 { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 1.2rem; }
+.a-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.a-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.a-field label { font-size: 0.7rem; font-weight: 700; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; }
+.a-field input, .a-field select, .a-field textarea {
+  border: 1px solid var(--border); border-radius: 7px;
+  padding: 0.65rem 0.9rem; font-family: var(--font-body);
+  font-size: 0.875rem; color: var(--text);
+  background: white; outline: none; transition: border-color 0.2s; resize: vertical;
+}
+.a-field input:focus, .a-field select:focus, .a-field textarea:focus { border-color: var(--blue); }
+.a-full { grid-column: 1/-1; }
+.btn-pub {
+  background: var(--blue); color: white; border: none;
+  border-radius: 7px; padding: 0.7rem 1.8rem;
+  font-family: var(--font-body); font-size: 0.875rem;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+}
+.btn-pub:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.feed { display: flex; flex-direction: column; gap: 0.9rem; }
+.update-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.6rem 1.8rem;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 1.4rem; align-items: start;
+  transition: all 0.25s; animation: cardIn 0.35s ease;
+}
+@keyframes cardIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+.update-card:hover { border-color: var(--blue-light); box-shadow: var(--shadow); }
+.u-cat {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.25rem 0.7rem;
+  border-radius: 4px; white-space: nowrap; align-self: center;
+}
+.cat-thought  { background: #EEF5FF; color: var(--blue); }
+.cat-research { background: #E6F7FB; color: #006E8A; }
+.cat-news     { background: #FFF8E6; color: #8A6000; }
+.cat-clinical { background: var(--green-light); color: var(--green); }
+.u-title { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+.u-body  { font-size: 0.84rem; color: var(--text2); line-height: 1.65; }
+.u-link  {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 0.5rem; font-size: 0.78rem; font-weight: 700;
+  color: var(--blue); text-decoration: none; transition: gap 0.2s;
+}
+.u-link:hover { gap: 8px; }
+.u-date { font-size: 0.72rem; color: var(--text3); white-space: nowrap; font-weight: 600; }
+
+/* ══ FAQ ══ */
+.faq-wrap { max-width: 800px; }
+.faq-item {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  margin-bottom: 0.6rem; overflow: hidden; transition: border-color 0.25s;
+  background: white;
+}
+.faq-item.open { border-color: var(--blue-light); }
+.faq-q {
+  width: 100%; background: none; border: none;
+  padding: 1.2rem 1.6rem; text-align: left; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: var(--font-body); font-size: 0.92rem;
+  font-weight: 600; color: var(--text); transition: color 0.2s;
+}
+.faq-item.open .faq-q { color: var(--blue); }
+.faq-chevron {
+  width: 18px; height: 18px; stroke: var(--text3); fill: none;
+  stroke-width: 2; flex-shrink: 0; transition: transform 0.3s, stroke 0.2s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); stroke: var(--blue); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.38s ease, padding 0.28s;
+  font-size: 0.875rem; color: var(--text2); line-height: 1.8;
+  padding: 0 1.6rem;
+}
+.faq-item.open .faq-a { max-height: 280px; padding: 0 1.6rem 1.3rem; }
+
+/* ══ CONTACT ══ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+.contact-info-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+.c-item { display: flex; gap: 1rem; align-items: flex-start; }
+.c-icon {
+  width: 42px; height: 42px; border-radius: 8px;
+  background: var(--bg2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.c-icon svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 1.6; }
+.c-label { font-size: 0.7rem; font-weight: 700; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+.c-val { font-size: 0.9rem; color: var(--text); line-height: 1.55; }
+.contact-form { background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow); }
+.contact-form h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.f-field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+.f-field label { font-size: 0.7rem; font-weight: 700; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; }
+.f-field input, .f-field textarea {
+  border: 1px solid var(--border); border-radius: 7px;
+  padding: 0.65rem 0.9rem; font-family: var(--font-body);
+  font-size: 0.875rem; color: var(--text);
+  background: var(--bg); outline: none; transition: border-color 0.2s; resize: none;
+}
+.f-field input:focus, .f-field textarea:focus { border-color: var(--blue); background: white; }
+.btn-send {
+  width: 100%; background: var(--blue); color: white; border: none;
+  border-radius: 7px; padding: 0.85rem;
+  font-family: var(--font-body); font-size: 0.9rem; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+}
+.btn-send:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+/* ══ FOOTER ══ */
+footer {
+  background: var(--text); color: rgba(255,255,255,0.7);
+  padding: 3.5rem 5vw 2rem;
+}
+.footer-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem;
+  padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1.5rem;
+}
+.footer-brand { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.7rem; }
+.footer-tagline { font-size: 0.82rem; line-height: 1.6; margin-bottom: 1rem; }
+.footer-contact-item { font-size: 0.82rem; line-height: 1.8; }
+.footer-col-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+.footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links-list a { text-decoration: none; color: rgba(255,255,255,0.65); font-size: 0.85rem; transition: color 0.2s; }
+.footer-links-list a:hover { color: #7DD8F0; }
+.footer-bottom {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; flex-wrap: wrap; font-size: 0.78rem; color: rgba(255,255,255,0.4);
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .feat-grid, .awards-grid, .patents-grid, .hospitals-grid { grid-template-columns: 1fr 1fr; }
+  .clin-grid, .comp-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .a-row { grid-template-columns: 1fr; }
+  .f-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero-slider-wrap { height: 70vh; min-height: 420px; }
+  .feat-grid, .awards-grid, .patents-grid, .hospitals-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .slider-arrow { width: 36px; height: 36px; }
+  .slider-prev { left: 0.7rem; }
+  .slider-next { right: 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAV ════════════════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#">
+    <!-- LOGO: Replace logo-placeholder div with your <img> tag -->
+    <img src="images/logo.png" 
+     alt="Carditek" 
+     style="height:42px; width:auto;">
+    <div class="nav-brand">
+      <span class="nav-brand-main">Carditek</span>
+      <span class="nav-brand-sub">Medical Devices PVT LTD</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#features">Technology</a></li>
+    <li><a href="#clinical">Clinical</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#patents">Patents</a></li>
+    <li><a href="#updates">Updates</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#features" onclick="closeMobileMenu()">Technology</a>
+  <a href="#clinical" onclick="closeMobileMenu()">Clinical</a>
+  <a href="#awards" onclick="closeMobileMenu()">Awards</a>
+  <a href="#patents" onclick="closeMobileMenu()">Patents</a>
+  <a href="#updates" onclick="closeMobileMenu()">Updates</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="gallery.html" target="_blank" rel="noopener noreferrer">Gallery</a>
+  <a href="careers.html" target="_blank" rel="noopener noreferrer">Careers</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact Us</a>
+</div>
+
+<!-- ═══════════════════════════ HERO SLIDER ════════════════════════════ -->
+<div class="hero-slider-wrap" id="heroSlider">
+  <div class="slider-track" id="sliderTrack">
+
+    <!-- SLIDE 1 -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/slide1.png"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">Award-Winning Technology</span>
+          <h1 class="slide-title">The Future of <em>ECG</em> Has Arrived</h1>
+          <p class="slide-desc">Sydäntek — a revolutionary wearable ECG system delivering 12-lead cardiac intelligence with no wires, no sticky electrodes.</p>
+          <a href="#features" class="slide-btn">Discover Sydäntek →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/slide2.png"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">High-Frequency ECG</span>
+          <h1 class="slide-title">Ischemia Detected in <em>Under 1 Minute</em></h1>
+          <p class="slide-desc">HF-ECG raises chest pain triage confidence to over 95% — bringing the physiology lab directly to the patient's bedside.</p>
+          <a href="#clinical" class="slide-btn">Clinical Applications →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/slide3.png"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">Wearable · Cloud · AI</span>
+          <h1 class="slide-title">Compact. Intelligent. <em>Deployable Anywhere.</em></h1>
+          <p class="slide-desc">2000 samples/sec, cloud-connected, AI-enabled — from remote clinics to leading cardiac centres across India.</p>
+          <a href="#about" class="slide-btn">About Carditek →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/slide4.png"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">3 Patents Granted</span>
+          <h1 class="slide-title">Backed by <em>Research</em> &amp; Innovation</h1>
+          <p class="slide-desc">Three patents granted by the Government of India. Four peer-reviewed publications. Validated in leading hospitals across the country.</p>
+          <a href="#patents" class="slide-btn">Our Patents →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/slide5.png"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">Recognised Excellence</span>
+          <h1 class="slide-title">13 Grants &amp; Awards. <em>One Mission.</em></h1>
+          <p class="slide-desc">From BIRAC and IIT Delhi to IEEE and NXP India — Carditek's technology is recognised by India's leading scientific and industry bodies.</p>
+          <a href="#awards" class="slide-btn">Awards &amp; Recognition →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 — GIF -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/video1.gif"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">See It In Action</span>
+          <h1 class="slide-title">Sydäntek <em>in Action</em></h1>
+          <p class="slide-desc">Watch how Sydäntek transforms cardiac diagnostics — from patch application to AI-powered report in minutes.</p>
+          <a href="#features" class="slide-btn">Explore Features →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 — GIF -->
+    <div class="slide">
+      <div class="slide-img">
+        <img src="images/video2.gif"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-text">
+          <span class="slide-tag">See It In Action</span>
+          <h1 class="slide-title">Sydäntek <em>in Action</em></h1>
+          <p class="slide-desc">Watch how Sydäntek transforms cardiac diagnostics — from patch application to AI-powered report in minutes.</p>
+          <a href="#features" class="slide-btn">Explore Features →</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slider-track -->
+
+  <!-- Arrows -->
+  <button class="slider-arrow slider-prev" onclick="slideMove(-1)" aria-label="Previous">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="slider-arrow slider-next" onclick="slideMove(1)" aria-label="Next">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots"></div>
+
+  <!-- Counter -->
+  <div class="slide-counter" id="slideCounter">1 / 6</div>
+
+</div>
+
+ 
+
+  <!-- Arrows -->
+  <!-- <button class="slider-arrow slider-prev" onclick="slideMove(-1)" aria-label="Previous">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="slider-arrow slider-next" onclick="slideMove(1)" aria-label="Next">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button> -->
+
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots"></div>
+
+  <!-- Counter -->
+  <div class="slide-counter" id="slideCounter">1 / 6</div>
+</div>
+
+<!-- ═══════════════════════════ STATS BAR ══════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">1000</div>
+      <div class="stat-label">Samples per second</div>
+    </div>
+    <div class="stat-item reveal delay-1">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Patents granted</div>
+    </div>
+    <div class="stat-item reveal delay-2">
+      <div class="stat-num">95%+</div>
+      <div class="stat-label">Clinical triage confidence</div>
+    </div>
+    <div class="stat-item reveal delay-3">
+      <div class="stat-num">Up to 500 Hz</div>
+      <div class="stat-label">HF-ECG range</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ ABOUT ══════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label reveal">Discover Our Company</div>
+        <h2 class="sec-title reveal delay-1">Cardiac Solutions<br><em>For Tomorrow</em></h2>
+        <div class="about-mission-box reveal delay-2">
+          <p>"We believe in a world where mankind is digitized, connected, and screened for early heart disease detection and prevention."</p>
+        </div>
+        <ul class="about-points reveal delay-2">
+          <li>Carditek Medical Devices is at the forefront of revolutionizing cardiac diagnosis, designed with a patient-first approach.</li>
+          <li>Sydäntek ECG system has been used in clinical trials and pivotal pilot studies at hospitals in Bangalore, Chennai, and Vellore.</li>
+          <li>Cloud-connected and AI-enabled, building ECG registries for the Indian population with every ECG stored and annotated.</li>
+          <li>A versatile doctor's prescription-only solution — from 12-lead ECG to HF-ECG, colour scalograms, and long-term monitoring from a single wearable device.</li>
+        </ul>
+      </div>
+      <div class="reveal delay-2">
+        <!-- DEVICE IMAGE: Replace .about-img-box content with your device photo -->
+
+
+
+        <div class="about-slider" id="aboutSlider">
+
+          <div class="about-slides" id="aboutSlides">
+
+            <!-- SLIDE 1 -->
+            <!-- Replace src with: images/about1.jpg -->
+            <div class="about-slide">
+              <img src="images/about1.jpg" alt="Sydäntek Device">
+              <div class="about-slide-caption">
+                <span>Sydäntek ECG Patch</span>
+                <small>Compact · Wearable · No electrodes</small>
+              </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <!-- Replace src with: images/about2.jpg -->
+            <div class="about-slide">
+              <img src="images/about2.jpg" alt="Clinical Use">
+              <div class="about-slide-caption">
+                <span>Clinical Deployment</span>
+                <small>Pilot studies across leading hospitals in India</small>
+              </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <!-- Replace src with: images/about3.jpg -->
+            <div class="about-slide">
+              <img src="images/about3.jpg" alt="ECG Report">
+              <div class="about-slide-caption">
+                <span>AI-Powered ECG Reports</span>
+                <small>12-lead · HF-ECG · Colour Scalograms · Holter</small>
+              </div>
+            </div>
+
+            <!-- SLIDE 4 -->
+            <!-- Replace src with: images/about4.jpg -->
+            <div class="about-slide">
+              <img src="images/about4.jpg" alt="Carditek Team">
+              <div class="about-slide-caption">
+                <span>The Carditek Team</span>
+                <small>Koramangala, Bengaluru · Taking technology to people</small>
+              </div>
+            </div>
+          </div><!-- /about-slides -->
+
+          <!-- Arrows -->
+          <button class="about-slider-arrow about-slider-prev"
+                  onclick="aboutSlide(-1)" aria-label="Previous">
+            <svg viewBox="0 0 24 24">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+                                                                    
+          <button class="about-slider-arrow about-slider-next"
+                  onclick="aboutSlide(1)" aria-label="Next">
+            <svg viewBox="0 0 24 24">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+
+          <!-- Dots -->
+          <div class="about-slider-dots" id="aboutDots"></div>
+
+          <!-- Paused badge -->
+          <div class="about-paused-badge">⏸ Paused</div>
+
+        </div><!-- /about-slider -->       
+      </div>
+    </div>
+  </div>
+</section>                                      
+
+<!-- ═══════════════════════════ FEATURES ═══════════════════════════════ -->
+<section class="section section-alt" id="features">
+  <div class="inner">
+    <div class="feat-intro">
+      <div>
+        <div class="sec-label reveal">Technology</div>
+        <h2 class="sec-title reveal delay-1">A Full Spectrum of<br><em>Cardiac Intelligence</em></h2>
+      </div>
+      <p class="sec-body reveal delay-2">
+        Conventional ECG captures only 0.05–40 Hz at 300–500 samples/sec. 
+        Sydäntek samples at 1000/sec across a vastly wider range — 
+        revealing cardiac signals invisible to 100-year-old technology.
+      </p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24"><polyline points="2,12 6,12 8,4 10,20 12,10 14,14 16,12 22,12"/></svg>
+        </div>
+        <div class="feat-name">12-Lead ECG</div>
+        <div class="feat-desc">Standard 12-lead ECG from a single compact wearable patch. Instantly deployable with minimal instruction, accessible even in remote areas.</div>
+        <span class="feat-badge">Standard</span>
+      </div>
+      <div class="feat-card reveal delay-1">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="feat-name">HF-ECG (High Frequency)</div>
+        <div class="feat-desc">Detects ischemia with less than 1-minute delay at 150–250 Hz using signal averaging. First in India to bring this to the patient's bedside.</div>
+        <span class="feat-badge">First in India</span>
+      </div>
+      <div class="feat-card reveal delay-2">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="8,12 11,15 16,10"/></svg>
+        </div>
+        <div class="feat-name">Ultra HF-ECG</div>
+        <div class="feat-desc">Dyssynchrony detection at 250–500 Hz assists patient selection for CRT pacemakers and provides real-time guidance during His Bundle pacing.</div>
+        <span class="feat-badge">Advanced</span>
+      </div>
+      <div class="feat-card reveal delay-1">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="feat-name">Short &amp; Long Holters</div>
+        <div class="feat-desc">ML-powered reports condensed to a single readable page in under 15 seconds. Real-time back-office monitoring reports arrhythmias to doctors within minutes.</div>
+        <span class="feat-badge">ML-Powered</span>
+      </div>
+      <div class="feat-card reveal delay-2">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="feat-name">Colour Scalograms</div>
+        <div class="feat-desc">Wavelet-based colour spectrograms visualise subtle cardiac frequency changes (3–10 Hz), enabling early detection of heart failure and diastolic dysfunction.</div>
+        <span class="feat-badge">Unique</span>
+      </div>
+      <div class="feat-card reveal delay-3">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="feat-name">Surface His Bundle ECG</div>
+        <div class="feat-desc">Captures His bundle electrical activity non-invasively for precise pacemaker lead positioning and cardiac conduction analysis.</div>
+        <span class="feat-badge">Rare Capability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ COMPARISON ══════════════════════════════ -->
+<section class="section" id="comparison">
+  <div class="inner">
+    <div class="sec-label reveal">Why Sydäntek</div>
+    <h2 class="sec-title reveal delay-1">100-Year-Old Technology, <em>Reimagined</em></h2>
+    <p class="sec-body reveal delay-2" style="margin-bottom:2.5rem;">Think chest pain — think ECGs — think liberation from clumsiness and time wasted.</p>
+    <div class="comp-grid">
+      <div class="comp-card comp-old reveal delay-1">
+        <div class="comp-card-label"><span class="badge-cross">✕</span> Conventional ECG</div>
+        <div class="comp-card-title">Clumsy. Limited. Outdated.</div>
+        <ul class="comp-list">
+          <li><span class="ic">✕</span>Sticky electrodes and tangled wires required</li>
+          <li><span class="ic">✕</span>Samples only 0.05–40 Hz — misses critical data</li>
+          <li><span class="ic">✕</span>300–500 samples/sec — low resolution</li>
+          <li><span class="ic">✕</span>No cloud connectivity or AI analysis</li>
+          <li><span class="ic">✕</span>Difficult setup with steep learning curve</li>
+          <li><span class="ic">✕</span>Single modality — 12-lead only</li>
+          <li><span class="ic">✕</span>Missed ischemia in chest pain triages</li>
+          <li><span class="ic">✕</span>Large disposable waste footprint</li>
+        </ul>
+      </div>
+      <div class="comp-card comp-new reveal delay-2">
+        <div class="comp-card-label"><span class="badge-check">✓</span> Sydäntek by Carditek</div>
+        <div class="comp-card-title">Accurate. Wearable. Intelligent.</div>
+        <ul class="comp-list">
+          <li><span class="ic">✓</span>No electrodes, no wires — capacitive sensors</li>
+          <li><span class="ic">✓</span>Captures up to 500 Hz (HF &amp; UHF ECG)</li>
+          <li><span class="ic">✓</span>1000 samples/sec — 480,000 bytes/sec to cloud</li>
+          <li><span class="ic">✓</span>AI-enabled, cloud-connected, annotated registry</li>
+          <li><span class="ic">✓</span>Instant deployment — minimal training needed</li>
+          <li><span class="ic">✓</span>12-lead + HF-ECG + Holter + Scalograms + HRV</li>
+          <li><span class="ic">✓</span>Ischemia detected in under 1 minute</li>
+          <li><span class="ic">✓</span>Zero disposables — sustainable design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CLINICAL ════════════════════════════════ -->
+<section class="section section-alt" id="clinical">
+  <div class="inner">
+    <div class="sec-label reveal">Clinical Applications</div>
+    <h2 class="sec-title reveal delay-1">Changing How Cardiologists <em>Make Decisions</em></h2>
+    <p class="sec-body reveal delay-2" style="margin-bottom:2.5rem;">
+      From emergency triage to post-procedure monitoring, Sydäntek delivers data 
+      that cardiologists do not currently have access to.
+    </p>
+    <div class="clin-grid">
+      <div class="clin-card reveal">
+        <div class="clin-num">01 — Emergency</div>
+        <div class="clin-title">Chest Pain Triage</div>
+        <div class="clin-body">HF-ECG raises clinician confidence in chest pain cases to over 95%, dramatically reducing unnecessary admissions. No longer will we have missed diagnoses in emergency triages.</div>
+        <div class="clin-stats">
+          <div><div class="clin-stat-num">5</div><div class="clin-stat-lbl">of 100 have MACE &amp; 1 dies</div></div>
+          <div><div class="clin-stat-num">&gt;50</div><div class="clin-stat-lbl">die within 5 years</div></div>
+          <div><div class="clin-stat-num">~25</div><div class="clin-stat-lbl">rehospitalized in 30 days</div></div>
+        </div>
+      </div>
+      <div class="clin-card reveal delay-1">
+        <div class="clin-num">02 — Post-Procedure</div>
+        <div class="clin-title">Stent &amp; Angioplasty Monitoring</div>
+        <div class="clin-body">Real-time HF-ECG detects acute in-stent thrombosis and recurrent ischemia within minutes of a procedure. Gone are the days of silent ischemia in the cardiac unit after stent or surgical procedures.</div>
+      </div>
+      <div class="clin-card reveal delay-2">
+        <div class="clin-num">03 — Pacemakers</div>
+        <div class="clin-title">Dyssynchrony &amp; CRT Guidance</div>
+        <div class="clin-body">Only 30% of patients benefit from CRT pacemakers under current selection criteria. Colour spectrograms and UHF-ECG provide real-time guidance during His Bundle pacing, improving outcomes.</div>
+      </div>
+      <div class="clin-card reveal delay-3">
+        <div class="clin-num">04 — Heart Failure</div>
+        <div class="clin-title">HFpEF &amp; HFrEF Monitoring</div>
+        <div class="clin-body">Colour scalograms detect diastolic dysfunction early and serially track disease progression. Serial data on these patients is priceless — changes foresee decompensation before irreversible damage sets in.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ AWARDS ══════════════════════════════════ -->
+<section class="section" id="awards">
+  <div class="inner">
+    <div class="sec-label reveal">Recognition</div>
+    <h2 class="sec-title reveal delay-1">Awards, Grants &amp; <em>Partnerships</em></h2>
+    <p class="sec-body reveal delay-2" style="margin-bottom:2.5rem;">Validated by India's leading scientific institutions, government bodies, and international organisations.</p>
+    <div class="awards-grid">
+      <div class="award-card reveal"><div class="award-dot"></div><div><strong>BIRAC BIG Grant (13th Call)</strong><span>National Biopharma Mission — innovation funding</span></div></div>
+      <div class="award-card reveal delay-1"><div class="award-dot"></div><div><strong>National Biopharma Grant — BIRAC</strong><span>Specifically awarded for HF-ECG technology</span></div></div>
+      <div class="award-card reveal delay-2"><div class="award-dot"></div><div><strong>Innovation Grant — Pfizer &amp; IIT Delhi</strong><span>Collaborative healthcare innovation programme</span></div></div>
+      <div class="award-card reveal"><div class="award-dot"></div><div><strong>MSME Grant — IISc Bangalore</strong><span>Startup support from premier institution</span></div></div>
+      <div class="award-card reveal delay-1"><div class="award-dot"></div><div><strong>PRISM II — DST AIC Banasthali</strong><span>National Aerospace Laboratories programme</span></div></div>
+      <div class="award-card reveal delay-2"><div class="award-dot"></div><div><strong>Mentored by DERBI Foundation</strong><span>Medical device incubation excellence</span></div></div>
+      <div class="award-card reveal"><div class="award-dot"></div><div><strong>National Bio Entrepreneurship 2020</strong><span>Competition winner</span></div></div>
+      <div class="award-card reveal delay-1"><div class="award-dot"></div><div><strong>Indo-Sweden Healthcare Innovation 2022</strong><span>International healthcare challenge</span></div></div>
+      <div class="award-card reveal delay-2"><div class="award-dot"></div><div><strong>TURBO START Founders Fellowship</strong><span>Entrepreneurship excellence award</span></div></div>
+      <div class="award-card reveal"><div class="award-dot"></div><div><strong>BCIC Award 2023</strong><span>Bangalore Chamber of Industry &amp; Commerce</span></div></div>
+      <div class="award-card reveal delay-1"><div class="award-dot"></div><div><strong>Women Entrepreneur of the Year 2023</strong><span>Awarded by IEEE</span></div></div>
+      <div class="award-card reveal delay-2"><div class="award-dot"></div><div><strong>NXP India Tech Startup Challenge 2023</strong><span>Winner — healthcare technology</span></div></div>
+    </div>
+
+    <h3 class="sec-title reveal" style="font-size:1.5rem;margin-top:3.5rem;margin-bottom:0;">Hospital <em>Partnerships</em></h3>
+    <div class="hospitals-grid" style="margin-top:1.2rem;">
+      <div class="hospital-chip reveal"><strong>Sri Jayadeva Institute</strong><br><small>TIFAC — 60,000 ECGs requested</small></div>
+      <div class="hospital-chip reveal delay-1"><strong>Madras Medical Mission, Chennai</strong><br><small>Pilot studies</small></div>
+      <div class="hospital-chip reveal delay-2"><strong>Kovai Medical Center, Coimbatore</strong><br><small>Clinical partnership</small></div>
+      <div class="hospital-chip reveal delay-1"><strong>King George's Medical University</strong><br><small>Pilot studies ongoing</small></div>
+      <div class="hospital-chip reveal delay-2"><strong>IISc Bangalore</strong><br><small>Longevity studies</small></div>
+      <div class="hospital-chip reveal delay-3"><strong>Manchester University UK</strong><br><small>Level42 AI collaboration</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ PATENTS ═════════════════════════════════ -->
+<section class="section section-alt" id="patents">
+  <div class="inner">
+    <div class="sec-label reveal">Intellectual Property</div>
+    <h2 class="sec-title reveal delay-1">3 Patents Granted by <em>Government of India</em></h2>
+    <div class="patents-grid" style="margin-top:2.5rem;">
+      <div class="patent-card reveal">
+        <div class="patent-number">#541479</div>
+        <span class="patent-stamp">Patent Office, Govt. of India · 2019</span>
+        <div class="patent-title">Multifunctional Wearable ECG Device</div>
+        <div class="patent-desc">Continuous monitoring of conventional ECG, HFECG, UHFECG, neu ECGs, surface His bundle ECG, and Heart Rate Variability (HRV) from a single device.</div>
+      </div>
+      <div class="patent-card reveal delay-1">
+        <div class="patent-number">#547098</div>
+        <span class="patent-stamp">Patent Office, Govt. of India · 2016</span>
+        <div class="patent-title">Compact 12 Lead ECG Patch</div>
+        <div class="patent-desc">Compact wireless ECG system enabling full 12-lead acquisition from a wearable patch — the foundation of the Sydäntek device platform.</div>
+      </div>
+      <div class="patent-card reveal delay-2">
+        <div class="patent-number">#543569</div>
+        <span class="patent-stamp">Patent Office, Govt. of India · 2018</span>
+        <div class="patent-title">Fetal ECG Monitoring System</div>
+        <div class="patent-desc">Active capacitance sensors assisted by Audio MEMS for non-invasive fetal ECG monitoring — extending Carditek's technology to maternal healthcare.</div>
+      </div>
+    </div>
+
+    <div class="sec-label reveal" style="margin-top:3.5rem;">Peer-Reviewed Publications</div>
+    <h3 class="sec-title reveal delay-1" style="font-size:1.5rem;">Research That <em>Proves It Works</em></h3>
+    <div class="pub-list" style="margin-top:1.5rem;">
+      <div class="pub-item reveal"><span class="pub-year">2021</span><div><div class="pub-title">Beat by Beat HFECG Detection with a Wearable Device: Tiny Imperceptible Details Decide Everything!</div><div class="pub-venue">Heart Rhythm, Volume 18, Issue 8, Supplement S207 — August 2021</div></div></div>
+      <div class="pub-item reveal delay-1"><span class="pub-year">2022</span><div><div class="pub-title">Early Detection of Ischaemia Through High-Frequency ECGs: The Role of Medical-Grade Wearables for Chest Pain Triages</div><div class="pub-venue">CONECCT 2022 — International Conference on Electronics, Computing and Communication Technologies</div></div></div>
+      <div class="pub-item reveal delay-2"><span class="pub-year">2022</span><div><div class="pub-title">30-Minute Short Holter Monitoring in Outpatient Practices — New Clues to Diagnosis</div><div class="pub-venue">CONECCT 2022 — International Conference on Electronics, Computing and Communication Technologies</div></div></div>
+      <div class="pub-item reveal delay-3"><span class="pub-year">2022</span><div><div class="pub-title">Validation of a Portable Device for HF-ECG in Ischemia Detection During Coronary Balloon Inflation in Angioplasty</div><div class="pub-venue">Heart Rhythm, Volume 19, Issue 5, Supplement S515 — May 2022</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ UPDATES ═════════════════════════════════ -->
+<section class="section" id="updates">
+  <div class="inner">
+    <div class="updates-top">
+      <div>
+        <div class="sec-label reveal">Latest Updates</div>
+        <h2 class="sec-title reveal delay-1" style="margin-bottom:0;">Thoughts, News<br><em>&amp; Research Updates</em></h2>
+      </div>
+      <div class="reveal delay-2" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.8rem;">
+        <button class="admin-toggle-btn" onclick="toggleAdmin()">＋ Post Update</button>
+        <div class="filter-wrap">
+          <button class="filter-btn active" onclick="filterFeed('all',this)">All</button>
+          <button class="filter-btn" onclick="filterFeed('thought',this)">💡 Thoughts</button>
+          <button class="filter-btn" onclick="filterFeed('research',this)">🔬 Research</button>
+          <button class="filter-btn" onclick="filterFeed('news',this)">📰 News</button>
+          <button class="filter-btn" onclick="filterFeed('clinical',this)">🏥 Clinical</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+      <h4>Post a New Update (Password Protected)</h4>
+      <div class="a-row">
+        <div class="a-field"><label>Admin Password</label><input type="password" id="adminPwd" placeholder="Enter password"></div>
+        <div class="a-field"><label>Category</label>
+          <select id="postCat">
+            <option value="thought">💡 Thought</option>
+            <option value="research">🔬 Research</option>
+            <option value="news">📰 News</option>
+            <option value="clinical">🏥 Clinical Update</option>
+          </select>
+        </div>
+      </div>
+      <div class="a-row">
+        <div class="a-field a-full"><label>Title</label><input type="text" id="postTitle" placeholder="Update headline"></div>
+      </div>
+      <div class="a-row">
+        <div class="a-field a-full"><label>Content</label><textarea id="postBody" rows="3" placeholder="Write your update here..."></textarea></div>
+      </div>
+      <div class="a-row">
+        <div class="a-field"><label>Link (optional)</label><input type="url" id="postLink" placeholder="https://..."></div>
+        <div class="a-field"><label>Link Label (optional)</label><input type="text" id="postLinkLabel" placeholder="Read more"></div>
+      </div>
+      <button class="btn-pub" onclick="publishPost()">Publish Update →</button>
+    </div>
+
+    <div class="feed" id="updatesFeed"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FAQ ═════════════════════════════════════ -->
+<section class="section section-alt" id="faq">
+  <div class="inner">
+    <div class="sec-label reveal">FAQ</div>
+    <h2 class="sec-title reveal delay-1">Frequently Asked <em>Questions</em></h2>
+    <div class="faq-wrap" style="margin-top:2rem;">
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <button class="faq-q">What is the primary mission of Carditek?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">Our mission is to revolutionize cardiac diagnosis through innovative technologies that enhance detection accuracy and improve patient outcomes — making ECG data accessible everywhere while capturing signals that 100-year-old technology simply cannot.</div>
+      </div>
+      <div class="faq-item reveal delay-1" onclick="toggleFaq(this)">
+        <button class="faq-q">What makes Sydäntek different from a conventional ECG machine?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">Conventional ECG machines use sticky electrodes and sample only 0.05–40 Hz at 300–500 samples/sec. Sydäntek is a compact wearable patch with no electrodes, no wires, sampling at 1000/sec up to 500 Hz. It captures HF-ECG, colour scalograms, Holter data, and surface His bundle ECG — all from one device, deployable anywhere.</div>
+      </div>
+      <div class="faq-item reveal delay-2" onclick="toggleFaq(this)">
+        <button class="faq-q">Is Sydäntek a consumer wearable device?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">No. Sydäntek is a doctor's prescription-only, medical-grade multimodal device. It has the highest specifications for a medical-grade device and is designed for cardiologists, surgeons, and paramedical healthcare workers — not a consumer product.</div>
+      </div>
+      <div class="faq-item reveal delay-1" onclick="toggleFaq(this)">
+        <button class="faq-q">What clinical conditions does Sydäntek support?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">Sydäntek supports chest pain triage, post-stent and post-angioplasty monitoring, ischemia detection, heart failure (HFpEF and HFrEF), dyssynchrony assessment, pacemaker selection and guidance (including His Bundle pacing), arrhythmia monitoring, and long-term cardiac surveillance.</div>
+      </div>
+      <div class="faq-item reveal delay-2" onclick="toggleFaq(this)">
+        <button class="faq-q">Where has Sydäntek been used clinically?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">Pilot studies at Sri Jayadeva Institute (Bangalore), Madras Medical Mission Hospital (Chennai), Kovai Medical Center (Coimbatore), King George's Medical University, and IISc Bangalore. International collaboration with Manchester University UK on Level42 AI research.</div>
+      </div>
+      <div class="faq-item reveal delay-1" onclick="toggleFaq(this)">
+        <button class="faq-q">How does Carditek use AI?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">AI and machine learning are used across data, hardware, and software — including simultaneous beat detection, classification, and rhythm analysis. The device is cloud-connected with registries being created for the Indian population, and every ECG is annotated for easy clinical reference.</div>
+      </div>
+      <div class="faq-item reveal delay-2" onclick="toggleFaq(this)">
+        <button class="faq-q">Who are the primary users of Carditek's products?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">Cardiologists, cardiac surgeons, paramedical healthcare workers, medical distributors, and hospital systems seeking advanced cardiac diagnostic technologies. Sydäntek is also suitable for patients requiring innovative long-term cardiac monitoring under medical supervision.</div>
+      </div>
+      <div class="faq-item reveal delay-1" onclick="toggleFaq(this)">
+        <button class="faq-q">Does Carditek also offer treatment devices, not just diagnostics?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">We specialise in both diagnosis and treatment. Our product range includes diagnostic devices as well as the Electro Chemo Therapy (ECT) system designed specifically for the treatment of cancer in addition to our comprehensive cardiac monitoring portfolio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CONTACT ═════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="inner">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-label reveal">Get in Touch</div>
+        <h2 class="sec-title reveal delay-1">Let's Talk About<br><em>Your Cardiac Needs</em></h2>
+        <p class="sec-body reveal delay-2">Whether you are a cardiologist, hospital administrator, researcher, or medical distributor — we'd love to hear from you.</p>
+        <div class="contact-info-list reveal delay-2">
+          <div class="c-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="c-label">Address</div><div class="c-val">No.81, 1st Floor, 4th Block, 7th Cross,<br>Koramangala, Bengaluru – 560034</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="c-label">Email</div><div class="c-val">sydantek@carditek.com</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="c-label">Phone</div><div class="c-val">+91 86189 58067<br>+91 98441 10277</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div><div class="c-label">Website</div><div class="c-val">www.carditek.com</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal delay-2">
+        <div class="contact-form">
+          <h3>Send us a message</h3>
+          <div class="f-row">
+            <div class="f-field"><label>First Name</label>
+              <input type="text" id="cf_firstname" placeholder="Your first name">
+            </div>
+            <div class="f-field"><label>Last Name</label>
+              <input type="text" id="cf_lastname" placeholder="Your last name">
+            </div>
+          </div>
+          <div class="f-field"><label>Email Address</label>
+            <input type="email" id="cf_email" placeholder="your@email.com">
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label>Job Title</label>
+              <input type="text" id="cf_jobtitle" placeholder="Cardiologist, Researcher...">
+            </div>
+            <div class="f-field"><label>Organisation</label>
+              <input type="text" id="cf_org" placeholder="Hospital / Company">
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label>Country</label>
+              <input type="text" id="cf_country" placeholder="India">
+            </div>
+            <div class="f-field"><label>WhatsApp Number</label>
+              <input type="tel" id="cf_whatsapp" placeholder="+91 90XXXXXXXX">
+            </div>
+          </div>
+          <div class="f-field"><label>Message</label>
+            <textarea rows="4" id="cf_message"
+              placeholder="Tell us how we can help you..."></textarea>
+          </div>
+
+          <button class="btn-send" onclick="submitContactForm()">
+            Send Message →
+          </button>
+
+          <div id="cf_success" style="display:none;margin-top:1rem;
+            background:#E6F5F2;border:1px solid #00866A;
+            border-radius:7px;padding:0.9rem 1.2rem;
+            color:#00866A;font-size:0.88rem;
+            font-weight:600;text-align:center;">
+            ✓ Message sent! We will get back to you within 2 working days.
+          </div>
+
+          <div id="cf_error" style="display:none;margin-top:1rem;
+            background:#FFF0F0;border:1px solid #E05A5A;
+            border-radius:7px;padding:0.9rem 1.2rem;
+            color:#C0392B;font-size:0.88rem;
+            font-weight:600;text-align:center;">
+            Something went wrong. Please email us at sydantek@carditek.com
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Carditek Medical Devices Pvt. Ltd.</div>
+      <div class="footer-tagline">Sydäntek — Taking technology to people.<br>Revolutionizing cardiac diagnosis through wearable AI-enabled ECG technology.</div>
+      <div class="footer-contact-item">
+        No.81, 1st Floor, 4th Block, 7th Cross, Koramangala, Bengaluru – 560034<br>
+        sydantek@carditek.com · +91 86189 58067
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links-list">
+        <li><a href="#about">About Carditek</a></li>
+        <li><a href="#features">Technology</a></li>
+        <li><a href="#clinical">Clinical Applications</a></li>
+        <li><a href="#awards">Awards &amp; Recognition</a></li>
+        <li><a href="#patents">Patents</a></li>
+        <li><a href="#updates">Latest Updates</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Patents</div>
+      <ul class="footer-links-list">
+        <li><a href="#patents">#541479 — Wearable ECG Device</a></li>
+        <li><a href="#patents">#547098 — Compact 12 Lead ECG Patch</a></li>
+        <li><a href="#patents">#543569 — Fetal ECG Monitoring</a></li>
+      </ul>
+      <div class="footer-col-title" style="margin-top:1.5rem;">Publications</div>
+      <ul class="footer-links-list">
+        <li><a href="#patents">Heart Rhythm 2021</a></li>
+        <li><a href="#patents">CONECCT 2022 (×2)</a></li>
+        <li><a href="#patents">Heart Rhythm 2022</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2017 Carditek Medical Devices Pvt. Ltd. All rights reserved.</span>
+    <span>Bengaluru, Karnataka, India</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ SCRIPTS ════════════════════════════════ -->
+<script>
+/* ══ SLIDER ══ */
+const track   = document.getElementById('sliderTrack');
+const dotsEl  = document.getElementById('sliderDots');
+const counter = document.getElementById('slideCounter');
+const TOTAL   = 6;
+let current   = 0;
+let autoTimer = null;
+let startX    = 0;
+let isDragging= false;
+
+function buildDots() {
+  dotsEl.innerHTML = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('button');
+    d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i+1));
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  }
+}
+
+function goTo(n) {
+  current = (n + TOTAL) % TOTAL;
+  track.style.transform = `translateX(-${current * 100}%)`;
+  document.querySelectorAll('.slider-dot').forEach((d,i) => d.classList.toggle('active', i===current));
+  counter.textContent = (current+1) + ' / ' + TOTAL;
+  resetAuto();
+}
+
+function slideMove(dir) { goTo(current + dir); }
+
+function resetAuto() {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() => goTo(current + 1), 5000);
+}
+
+/* Touch / mouse drag */
+const slider = document.getElementById('heroSlider');
+slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, {passive:true});
+slider.addEventListener('touchend',   e => {
+  if (!isDragging) return;
+  const diff = startX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) slideMove(diff > 0 ? 1 : -1);
+  isDragging = false;
+}, {passive:true});
+slider.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; });
+slider.addEventListener('mouseup',   e => {
+  if (!isDragging) return;
+  const diff = startX - e.clientX;
+  if (Math.abs(diff) > 40) slideMove(diff > 0 ? 1 : -1);
+  isDragging = false;
+});
+slider.addEventListener('mouseleave', () => isDragging = false);
+
+buildDots();
+resetAuto();
+
+/* ══ SCROLL REVEAL ══ */
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+revEls.forEach(el => revObs.observe(el));
+
+/* ══ FAQ ══ */
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ══ MOBILE NAV ══ */
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMobileMenu()  { document.getElementById('mobileMenu').classList.remove('open'); }
+
+/* ══ UPDATES ══ */
+const PWD = 'carditek2024';
+let allPosts = [];
+
+function defaultPosts() {
+  return [
+    { id:1, cat:'thought', date:'May 14, 2026',
+      title:'Research is to see what everybody else has seen — and think what nobody else has thought.',
+      body:'This has been our guiding principle at Carditek from day one. Every ECG data point carries a story we haven\'t fully learned to read yet.', link:'', linkLabel:'' },
+    { id:2, cat:'clinical', date:'May 10, 2026',
+      title:'Sri Jayadeva Institute requests 60,000 ECGs with Sydäntek',
+      body:'A major milestone — Sri Jayadeva Institute of Cardiovascular Sciences has submitted a TIFAC request for large-scale deployment of Sydäntek for ECG data collection and AI analysis.', link:'', linkLabel:'' },
+    { id:3, cat:'research', date:'April 28, 2026',
+      title:'HF-ECG raises chest pain triage confidence beyond 95%',
+      body:'Our latest clinical data from pilot studies shows that using high-frequency ECG in emergency chest pain triage raises clinician confidence levels to over 95%, dramatically reducing unnecessary admissions.', link:'', linkLabel:'' },
+    { id:4, cat:'news', date:'April 15, 2026',
+      title:'Carditek wins NXP India Tech Startup Challenge 2023',
+      body:'We are proud to be recognised among the top healthcare technology startups in India. This validates our commitment to bringing genuinely novel cardiac diagnostics to market.', link:'', linkLabel:'' }
+  ];
+}
+
+function loadPosts() {
+  try { const s = localStorage.getItem('ct_posts'); allPosts = s ? JSON.parse(s) : defaultPosts(); }
+  catch(e) { allPosts = defaultPosts(); }
+  renderFeed(allPosts);
+}
+
+function savePosts() { try { localStorage.setItem('ct_posts', JSON.stringify(allPosts)); } catch(e) {} }
+
+function catClass(c) { return {thought:'cat-thought',research:'cat-research',news:'cat-news',clinical:'cat-clinical'}[c]||'cat-thought'; }
+function catLabel(c) { return {thought:'💡 Thought',research:'🔬 Research',news:'📰 News',clinical:'🏥 Clinical'}[c]||c; }
+
+function renderFeed(posts) {
+  const el = document.getElementById('updatesFeed');
+  if (!posts.length) { el.innerHTML='<p style="color:var(--text3);padding:2rem 0;font-size:0.9rem;">No updates yet.</p>'; return; }
+  el.innerHTML = posts.map(p => `
+    <div class="update-card" data-cat="${p.cat}">
+      <span class="u-cat ${catClass(p.cat)}">${catLabel(p.cat)}</span>
+      <div>
+        <div class="u-title">${p.title}</div>
+        <div class="u-body">${p.body}</div>
+        ${p.link ? `<a class="u-link" href="${p.link}" target="_blank">${p.linkLabel||'Read more'} →</a>` : ''}
+      </div>
+      <div class="u-date">${p.date}</div>
+    </div>`).join('');
+}
+
+function filterFeed(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFeed(cat === 'all' ? allPosts : allPosts.filter(p => p.cat === cat));
+}
+
+function toggleAdmin() { document.getElementById('adminPanel').classList.toggle('open'); }
+
+function publishPost() {
+  if (document.getElementById('adminPwd').value !== PWD) { alert('Incorrect password.'); return; }
+  const title = document.getElementById('postTitle').value.trim();
+  const body  = document.getElementById('postBody').value.trim();
+  if (!title || !body) { alert('Please enter a title and content.'); return; }
+  allPosts.unshift({
+    id: Date.now(),
+    cat: document.getElementById('postCat').value,
+    date: new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'}),
+    title, body,
+    link: document.getElementById('postLink').value.trim(),
+    linkLabel: document.getElementById('postLinkLabel').value.trim()
+  });
+  savePosts(); renderFeed(allPosts);
+  document.getElementById('adminPanel').classList.remove('open');
+  ['adminPwd','postTitle','postBody','postLink','postLinkLabel'].forEach(id => document.getElementById(id).value='');
+}
+
+loadPosts();
+/* ── ABOUT MINI SLIDER ── */
+(function(){
+  const slider  = document.getElementById('aboutSlider');
+  const track   = document.getElementById('aboutSlides');
+  const dotsWrap= document.getElementById('aboutDots');
+  const TOTAL   = 4;
+  let current   = 0;
+  let timer     = null;
+  let isPaused  = false;
+
+  /* Build dots */
+  for(let i = 0; i < TOTAL; i++){
+    const d = document.createElement('button');
+    d.className = 'about-slider-dot' + (i===0?' active':'');
+    d.setAttribute('aria-label','Slide '+(i+1));
+    d.addEventListener('click', ()=>{ goTo(i); pauseSlider(); });
+    dotsWrap.appendChild(d);
+  }
+
+  function goTo(n){
+    current = (n + TOTAL) % TOTAL;
+    track.style.transform = 'translateX(-'+(current*100)+'%)';
+    dotsWrap.querySelectorAll('.about-slider-dot')
+      .forEach((d,i)=> d.classList.toggle('active', i===current));
+  }
+
+  function startAuto(){
+    clearInterval(timer);
+    timer = setInterval(()=>{
+      if(!isPaused) goTo(current+1);
+    }, 3000);
+  }
+
+  function pauseSlider(){
+    isPaused = true;
+    slider.classList.add('paused');
+  }
+
+  function resumeSlider(){
+    isPaused = false;
+    slider.classList.remove('paused');
+  }
+
+  /* Pause on hover */
+  slider.addEventListener('mouseenter', pauseSlider);
+  slider.addEventListener('mouseleave', resumeSlider);
+
+  /* Touch swipe support */
+  let startX = 0;
+  slider.addEventListener('touchstart', e=>{
+    startX = e.touches[0].clientX;
+  }, {passive:true});
+  slider.addEventListener('touchend', e=>{
+    const diff = startX - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 40){
+      goTo(current + (diff > 0 ? 1 : -1));
+      pauseSlider();
+    }
+  }, {passive:true});
+
+  /* Start auto-slide only when section is visible */
+  const section = document.getElementById('about');
+  const sectionObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ startAuto(); }
+      else { clearInterval(timer); }
+    });
+  }, {threshold: 0.3});
+  sectionObs.observe(section);
+
+  /* Global arrow function */
+  window.aboutSlide = function(dir){
+    goTo(current + dir);
+    pauseSlider();
+    setTimeout(resumeSlider, 4000);
+  };
+})();
+
+/* ══ NAV ACTIVE STATE ══ */
+const navAs = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+const secs  = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+  navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+cur ? 'var(--blue)' : ''; });
+}, {passive:true});
+
+/* ── CONTACT FORM → GOOGLE SHEETS ── */
+function submitContactForm() {
+
+  const FORM_ACTION    = 'https://docs.google.com/forms/d/e/1FAIpQLScYFCzLotuLP72qlS9xrBTsX4XwjOy8iNXOvkA1r3Nkboh4SQ/formResponse';
+  const ENTRY_FIRSTNAME = 'entry.753323637';
+  const ENTRY_LASTNAME  = 'entry.1864127746';
+  const ENTRY_EMAIL     = 'entry.1887850557';
+  const ENTRY_JOBTITLE  = 'entry.1081481455';
+  const ENTRY_ORG       = 'entry.197805613';
+  const ENTRY_COUNTRY   = 'entry.963546085';
+  const ENTRY_WHATSAPP  = 'entry.1199610254';
+  const ENTRY_MESSAGE   = 'entry.753323637';
+
+  /* Validation */
+  const fname = document.getElementById('cf_firstname').value.trim();
+  const email = document.getElementById('cf_email').value.trim();
+  if (!fname) { alert('Please enter your first name.'); return; }
+  if (!email) { alert('Please enter your email address.'); return; }
+
+  /* Build form data */
+  const data = new FormData();
+  data.append(ENTRY_FIRSTNAME, fname);
+  data.append(ENTRY_LASTNAME,  document.getElementById('cf_lastname').value.trim());
+  data.append(ENTRY_EMAIL,     email);
+  data.append(ENTRY_JOBTITLE,  document.getElementById('cf_jobtitle').value.trim());
+  data.append(ENTRY_ORG,       document.getElementById('cf_org').value.trim());
+  data.append(ENTRY_COUNTRY,   document.getElementById('cf_country').value.trim());
+  data.append(ENTRY_WHATSAPP,  document.getElementById('cf_whatsapp').value.trim());
+  data.append(ENTRY_MESSAGE,   document.getElementById('cf_message').value.trim());
+
+  /* Send silently to Google Form */
+  fetch(FORM_ACTION, {
+    method : 'POST',
+    mode   : 'no-cors',
+    body   : data
+  })
+  .then(() => {
+    document.getElementById('cf_success').style.display = 'block';
+    document.getElementById('cf_error').style.display   = 'none';
+    ['cf_firstname','cf_lastname','cf_email',
+     'cf_jobtitle','cf_org','cf_country',
+     'cf_whatsapp','cf_message']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    document.getElementById('cf_success')
+      .scrollIntoView({ behavior:'smooth', block:'center' });
+  })
+  .catch(() => {
+    document.getElementById('cf_error').style.display   = 'block';
+    document.getElementById('cf_success').style.display = 'none';
+  });
+}
+</script>
+</body>
+</html>
+
+

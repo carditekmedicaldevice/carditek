@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Carditek Medical Devices</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#005B9A;--blue-dark:#004477;--blue-light:#1A7FC1;
+  --cyan:#00A3C4;--cyan-light:#E6F7FB;
+  --green:#00866A;--green-light:#E6F5F2;
+  --white:#FFFFFF;--bg:#F5F8FC;--bg2:#EDF3FA;
+  --text:#1A2B3C;--text2:#4A6480;--text3:#7A96B0;
+  --border:#D4E3F0;--shadow:0 2px 16px rgba(0,91,154,0.08);
+  --shadow-md:0 4px 28px rgba(0,91,154,0.13);
+  --radius:10px;--radius-lg:16px;
+  --font-head:'Playfair Display',Georgia,serif;
+  --font-body:'Nunito Sans',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:var(--font-body);font-weight:400;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue-light);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(10px);height:70px;display:flex;align-items:center;padding:0 5vw;gap:2rem;box-shadow:0 1px 8px rgba(0,91,154,0.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.logo-placeholder{width:42px;height:42px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.04em;text-align:center;line-height:1.3;padding:4px}
+.nav-brand{display:flex;flex-direction:column;line-height:1.2}
+.nav-brand-main{font-size:1.15rem;font-weight:700;color:var(--blue)}
+.nav-brand-sub{font-size:0.62rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.nav-links{display:flex;gap:0.2rem;list-style:none;margin-left:auto;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text2);font-size:0.84rem;font-weight:600;padding:0.4rem 0.85rem;border-radius:6px;transition:all 0.2s}
+.nav-links a:hover{color:var(--blue);background:var(--bg2)}
+.nav-links .nav-cta{background:var(--blue);color:white!important;padding:0.45rem 1.1rem;border-radius:6px;margin-left:0.5rem}
+.nav-links .nav-cta:hover{background:var(--blue-dark)!important}
+.nav-active{color:var(--blue)!important;background:var(--bg2)!important}
+
+/* HERO */
+.gallery-hero{margin-top:70px;background:var(--blue);padding:60px 5vw 50px;position:relative;overflow:hidden}
+.gallery-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:0.35rem 1rem;border-radius:100px;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:1.5rem}
+.hero-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);color:white;font-weight:600;line-height:1.15;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:#7DD8F0}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.78);max-width:520px;line-height:1.75}
+.hero-ecg{position:absolute;bottom:0;left:0;right:0;height:40px;opacity:0.12}
+
+/* SECTION */
+.section{padding:70px 5vw}
+.section-alt{background:var(--bg)}
+.inner{max-width:1200px;margin:0 auto}
+.sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.7rem;display:flex;align-items:center;gap:8px}
+.sec-label::before{content:'';width:24px;height:2px;background:var(--cyan);flex-shrink:0}
+.sec-title{font-family:var(--font-head);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:600;color:var(--text);line-height:1.2;margin-bottom:1rem}
+.sec-title em{font-style:italic;color:var(--blue)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+/* FILTER TABS */
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{background:white;border:1px solid var(--border);color:var(--text2);padding:0.42rem 1rem;border-radius:100px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--blue);border-color:var(--blue);color:white}
+
+/* ══ GALLERY GRID — unique mosaic layout ══ */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:auto;
+  gap:1rem;
+  margin-top:2rem;
+}
+
+/* Card base */
+.g-card{
+  position:relative;overflow:hidden;
+  border-radius:var(--radius-lg);
+  background:var(--bg2);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
+}
+.g-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:var(--shadow-md);border-color:var(--blue-light)}
+
+/* Unique grid placement for each card */
+.g-card:nth-child(1){grid-column:1/8;grid-row:1/3;min-height:340px}   /* large left */
+.g-card:nth-child(2){grid-column:8/13;grid-row:1/2;min-height:165px}  /* top right */
+.g-card:nth-child(3){grid-column:8/13;grid-row:2/3;min-height:165px}  /* bottom right */
+.g-card:nth-child(4){grid-column:1/5;grid-row:3/4;min-height:220px}   /* bottom left */
+.g-card:nth-child(5){grid-column:5/9;grid-row:3/4;min-height:220px}   /* bottom mid */
+.g-card:nth-child(6){grid-column:9/13;grid-row:3/4;min-height:220px}  /* bottom right */
+
+/* IMAGE inside card */
+.g-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.5s ease;
+}
+.g-card:hover .g-img{transform:scale(1.05)}
+
+/* Placeholder for images not yet added */
+.g-img-placeholder{
+  width:100%;height:100%;min-height:inherit;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0.8rem;
+  background:linear-gradient(135deg,var(--bg2),var(--cyan-light));
+}
+.g-img-placeholder svg{width:40px;height:40px;stroke:var(--blue-light);fill:none;stroke-width:1;opacity:0.5}
+.g-img-placeholder span{font-size:0.75rem;color:var(--text3);font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
+
+/* OVERLAY on hover */
+.g-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,44,80,0.88) 0%,rgba(0,44,80,0.3) 50%,transparent 100%);
+  opacity:0;transition:opacity 0.35s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.4rem 1.6rem;
+}
+.g-card:hover .g-overlay{opacity:1}
+
+/* Always-visible caption at bottom */
+.g-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,30,60,0.82) 0%,transparent 100%);
+  padding:2.5rem 1.4rem 1.2rem;
+  transition:opacity 0.3s;
+}
+.g-cat{
+  font-size:0.67rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:0.35rem;
+  display:inline-block;padding:0.18rem 0.55rem;border-radius:3px;
+}
+.cat-device{background:rgba(0,163,196,0.8);color:white}
+.cat-clinical{background:rgba(0,134,106,0.8);color:white}
+.cat-team{background:rgba(0,91,154,0.8);color:white}
+.cat-award{background:rgba(255,170,0,0.85);color:#3A2000}
+.cat-research{background:rgba(100,60,180,0.75);color:white}
+
+.g-heading{
+  font-family:var(--font-head);
+  font-size:1rem;color:white;font-weight:600;
+  line-height:1.3;margin-bottom:0.3rem;
+  text-shadow:0 1px 4px rgba(0,0,0,0.4);
+}
+.g-card:nth-child(1) .g-heading{font-size:1.25rem}
+.g-subheading{
+  font-size:0.78rem;color:rgba(255,255,255,0.82);
+  line-height:1.5;margin-bottom:0.35rem;
+}
+.g-note{
+  font-size:0.72rem;color:rgba(255,255,255,0.6);
+  line-height:1.5;font-style:italic;
+}
+
+/* Expand icon on hover */
+.g-expand{
+  position:absolute;top:1rem;right:1rem;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.3);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.3s;
+}
+.g-card:hover .g-expand{opacity:1}
+.g-expand svg{width:14px;height:14px;stroke:white;fill:none;stroke-width:2}
+
+/* ══ LIGHTBOX ══ */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(0,20,40,0.95);
+  align-items:center;justify-content:center;
+  flex-direction:column;gap:1.5rem;
+  padding:2rem;
+}
+.lightbox.open{display:flex}
+.lightbox-img-wrap{
+  max-width:900px;width:100%;
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 8px 60px rgba(0,0,0,0.5);
+  position:relative;
+}
+.lightbox-img-wrap img{width:100%;height:auto;display:block;max-height:70vh;object-fit:contain;background:#0a1a2a}
+.lightbox-info{max-width:900px;width:100%;text-align:center}
+.lightbox-cat{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.5rem}
+.lightbox-title{font-family:var(--font-head);font-size:1.4rem;color:white;margin-bottom:0.4rem}
+.lightbox-sub{font-size:0.9rem;color:rgba(255,255,255,0.7)}
+.lightbox-note{font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;font-style:italic}
+.lightbox-close{
+  position:fixed;top:1.5rem;right:1.5rem;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all 0.2s;
+}
+.lightbox-close:hover{background:rgba(255,255,255,0.2)}
+.lightbox-close svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:2}
+.lightbox-nav{display:flex;gap:1rem;justify-content:center;margin-top:0.5rem}
+.lb-nav-btn{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.8);padding:0.5rem 1.2rem;border-radius:100px;
+  font-size:0.8rem;font-weight:600;cursor:pointer;
+  font-family:var(--font-body);transition:all 0.2s;
+}
+.lb-nav-btn:hover{background:rgba(255,255,255,0.18);color:white}
+.lb-nav-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* FOOTER FULL */
+footer {
+  background: var(--text);
+  color: rgba(255,255,255,0.7);
+  padding: 3.5rem 5vw 2rem;
+}
+.footer-inner-full {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1.5rem;
+}
+.footer-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.7rem;
+}
+.footer-tagline {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.65);
+}
+.footer-contact-item {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.55);
+}
+.footer-col-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
+}
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-links-list a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.84rem;
+  transition: color 0.2s;
+}
+.footer-links-list a:hover { color: #7DD8F0; }
+.footer-bottom-full {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+}
+
+@media(max-width:960px){
+  .footer-inner-full {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-bottom-full {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.4rem;
+  }
+}
+
+@media(max-width:960px){
+  .nav-links{display:none}
+  .g-card:nth-child(1){grid-column:1/13;grid-row:auto;min-height:260px}
+  .g-card:nth-child(2){grid-column:1/7;grid-row:auto;min-height:200px}
+  .g-card:nth-child(3){grid-column:7/13;grid-row:auto;min-height:200px}
+  .g-card:nth-child(4){grid-column:1/13;grid-row:auto;min-height:200px}
+  .g-card:nth-child(5){grid-column:1/7;grid-row:auto;min-height:200px}
+  .g-card:nth-child(6){grid-column:7/13;grid-row:auto;min-height:200px}
+}
+@media(max-width:600px){
+  .g-card{grid-column:1/13!important;grid-row:auto!important;min-height:220px!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <!-- LOGO: Replace logo-placeholder div with your <img> tag -->
+    <img src="images/logo.png" 
+     alt="Carditek" 
+     style="height:42px; width:auto;">
+    <div class="nav-brand">
+      <span class="nav-brand-main">Carditek</span>
+      <span class="nav-brand-sub">Medical Devices PVT LTD</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="carditek_website.html#about">About</a></li>
+    <li><a href="carditek_website.html#features">Technology</a></li>
+    <li><a href="carditek_website.html#clinical">Clinical</a></li>
+    <li><a href="carditek_website.html#awards">Awards</a></li>
+    <li><a href="gallery.html" class="nav-active">Gallery</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="carditek_website.html#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="gallery-hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Our Work in Action</div>
+    <h1 class="hero-title">Carditek in<br><em>Pictures</em></h1>
+    <p class="hero-sub">From our device on the bench to the cardiac wards of India's leading hospitals — a glimpse into how we work.</p>
+  </div>
+  <svg class="hero-ecg" viewBox="0 0 1440 40" preserveAspectRatio="none">
+    <polyline fill="none" stroke="white" stroke-width="1.5"
+      points="0,20 80,20 95,20 102,6 109,34 114,20 130,20 160,20 175,20 182,4 189,36 193,20 210,20 240,20 255,20 262,5 269,35 273,20 290,20 320,20 335,20 342,6 349,34 353,20 370,20 400,20 415,20 422,4 429,36 433,20 450,20 480,20 495,20 502,5 509,35 513,20 530,20 560,20 575,20 582,6 589,34 593,20 610,20 640,20 655,20 662,4 669,36 673,20 690,20 720,20 735,20 742,5 749,35 753,20 770,20 800,20 815,20 822,6 829,34 833,20 850,20 880,20 895,20 902,4 909,36 913,20 930,20 960,20 975,20 982,5 989,35 993,20 1010,20 1040,20 1055,20 1062,6 1069,34 1073,20 1090,20 1120,20 1135,20 1142,4 1149,36 1153,20 1170,20 1200,20 1215,20 1222,5 1229,35 1233,20 1250,20 1280,20 1295,20 1302,6 1309,34 1313,20 1330,20 1360,20 1375,20 1382,4 1389,36 1393,20 1410,20 1440,20"/>
+  </svg>
+</div>
+
+<!-- GALLERY -->
+<section class="section">
+  <div class="inner">
+    <div class="sec-label reveal">Gallery</div>
+    <h2 class="sec-title reveal d1">Technology &amp; <em>People</em></h2>
+
+    <!-- Filter bar -->
+    <div class="filter-bar reveal d2">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">All</button>
+      <button class="filter-btn" onclick="filterGallery('device',this)">Device</button>
+      <button class="filter-btn" onclick="filterGallery('clinical',this)">Clinical</button>
+      <button class="filter-btn" onclick="filterGallery('team',this)">Team</button>
+      <button class="filter-btn" onclick="filterGallery('award',this)">Awards</button>
+      <button class="filter-btn" onclick="filterGallery('research',this)">Research</button>
+    </div>
+
+    <!-- GALLERY GRID -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- CARD 1 — Large feature image -->
+      <!-- IMAGE: replace src with images/gimage1.png -->
+      <div class="g-card reveal" data-cat="device" data-index="0"
+           onclick="openLightbox(0)">
+        <img class="g-img" src="images/gimage1.png" alt="Sydäntek ECG Patch Device"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-img-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="7,12 9,8 11,14 13,10 15,12 17,12"/></svg>
+          <span>gimage1.png</span>
+        </div>
+        <div class="g-caption">
+          <span class="g-cat cat-device">Device</span>
+          <div class="g-heading">Sydäntek — The Wearable ECG Patch</div>
+          <div class="g-subheading">Compact · No wires · No sticky electrodes</div>
+          <div class="g-note">India's first multimodal wearable ECG device — from 12-lead to HF-ECG from a single patch</div>
+        </div>
+        <div class="g-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- CARD 2 -->
+      <!-- IMAGE: replace src with images/gimage2.png -->
+      <div class="g-card reveal d1" data-cat="clinical" data-index="1"
+           onclick="openLightbox(1)">
+        <img class="g-img" src="images/gimage2.png" alt="Clinical Pilot Study"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-img-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>gimage2.png</span>
+        </div>
+        <div class="g-caption">
+          <span class="g-cat cat-clinical">Clinical</span>
+          <div class="g-heading">Pilot Study — Sri Jayadeva Institute</div>
+          <div class="g-subheading">Bengaluru's premier cardiac centre</div>
+          <div class="g-note">TIFAC request for 60,000 ECGs using Sydäntek</div>
+        </div>
+        <div class="g-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- CARD 3 -->
+      <!-- IMAGE: replace src with images/gimage3.png -->
+      <div class="g-card reveal d2" data-cat="research" data-index="2"
+           onclick="openLightbox(2)">
+        <img class="g-img" src="images/gimage3.png" alt="HF-ECG Research"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-img-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span>gimage3.png</span>
+        </div>
+        <div class="g-caption">
+          <span class="g-cat cat-research">Research</span>
+          <div class="g-heading">HF-ECG Waveform Analysis</div>
+          <div class="g-subheading">High-frequency cardiac signal processing</div>
+          <div class="g-note">Ischemia detection in under 1 minute — published in Heart Rhythm 2022</div>
+        </div>
+        <div class="g-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- CARD 4 -->
+      <!-- IMAGE: replace src with images/gimage4.png -->
+      <div class="g-card reveal d1" data-cat="award" data-index="3"
+           onclick="openLightbox(3)">
+        <img class="g-img" src="images/gimage4.png" alt="Awards and Recognition"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-img-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>gimage4.png</span>
+        </div>
+        <div class="g-caption">
+          <span class="g-cat cat-award">Award</span>
+          <div class="g-heading">NXP India Tech Startup Challenge 2023</div>
+          <div class="g-subheading">Winner — Healthcare Technology Category</div>
+          <div class="g-note">One of 13 national awards and grants received by Carditek</div>
+        </div>
+        <div class="g-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- CARD 5 -->
+      <!-- IMAGE: replace src with images/gimage5.png -->
+      <div class="g-card reveal d2" data-cat="team" data-index="4"
+           onclick="openLightbox(4)">
+        <img class="g-img" src="images/gimage5.png" alt="Carditek Team"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-img-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>gimage5.png</span>
+        </div>
+        <div class="g-caption">
+          <span class="g-cat cat-team">Team</span>
+          <div class="g-heading">The People Behind Sydäntek</div>
+          <div class="g-subheading">Engineers, clinicians and innovators</div>
+          <div class="g-note">A mission-driven team from Koramangala, Bengaluru</div>
+        </div>
+        <div class="g-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- CARD 6 -->
+      <!-- IMAGE: replace src with images/gimage6.png -->
+      <div class="g-card reveal d3" data-cat="clinical" data-index="5"
+           onclick="openLightbox(5)">
+        <img class="g-img" src="images/gimage6.png" alt="Hospital Partnership"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-img-placeholder" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>gimage6.png</span>
+        </div>
+        <div class="g-caption">
+          <span class="g-cat cat-clinical">Clinical</span>
+          <div class="g-heading">Hospital Deployment — Madras Medical Mission</div>
+          <div class="g-subheading">Chennai — Active pilot study</div>
+          <div class="g-note">Sydäntek deployed across leading cardiac centres in South India</div>
+        </div>
+        <div class="g-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-close" onclick="closeLightbox()">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  <div class="lightbox-img-wrap">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <div class="lightbox-info">
+    <div class="lightbox-cat" id="lbCat"></div>
+    <div class="lightbox-title" id="lbTitle"></div>
+    <div class="lightbox-sub" id="lbSub"></div>
+    <div class="lightbox-note" id="lbNote"></div>
+  </div>
+  <div class="lightbox-nav">
+    <button class="lb-nav-btn" onclick="lbNav(-1)">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous
+    </button>
+    <button class="lb-nav-btn" onclick="lbNav(1)">
+      Next <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner-full">
+    <div>
+      <div class="footer-brand">Carditek Medical Devices Pvt. Ltd.</div>
+      <div class="footer-tagline">
+        Sydäntek — Taking technology to people.<br>
+        Revolutionizing cardiac diagnosis through wearable AI-enabled ECG technology.
+      </div>
+      <div class="footer-contact-item">
+        No.81, 1st Floor, 4th Block, 7th Cross,
+        Koramangala, Bengaluru – 560034<br>
+        sydantek@carditek.com · +91 86189 58067
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links-list">
+        <li><a href="carditek_website.html#about">About Carditek</a></li>
+        <li><a href="carditek_website.html#features">Technology</a></li>
+        <li><a href="carditek_website.html#clinical">Clinical Applications</a></li>
+        <li><a href="carditek_website.html#awards">Awards &amp; Recognition</a></li>
+        <li><a href="carditek_website.html#patents">Patents</a></li>
+        <li><a href="carditek_website.html#updates">Latest Updates</a></li>
+        <li><a href="carditek_website.html#faq">FAQ</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="carditek_website.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Patents</div>
+      <ul class="footer-links-list">
+        <li><a href="carditek_website.html#patents">#541479 — Wearable ECG Device</a></li>
+        <li><a href="carditek_website.html#patents">#547098 — Compact 12 Lead ECG Patch</a></li>
+        <li><a href="carditek_website.html#patents">#543569 — Fetal ECG Monitoring</a></li>
+      </ul>
+      <div class="footer-col-title" style="margin-top:1.5rem;">Publications</div>
+      <ul class="footer-links-list">
+        <li><a href="carditek_website.html#patents">Heart Rhythm 2021</a></li>
+        <li><a href="carditek_website.html#patents">CONECCT 2022 (×2)</a></li>
+        <li><a href="carditek_website.html#patents">Heart Rhythm 2022</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom-full">
+    <span>© 2017 Carditek Medical Devices Pvt. Ltd. All rights reserved.</span>
+    <span>Bengaluru, Karnataka, India</span>
+  </div>
+</footer>
+
+
+<script>
+/* REVEAL */
+const revEls=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:0.08});
+revEls.forEach(el=>obs.observe(el));
+
+/* GALLERY DATA */
+const galleryData=[
+  {src:'images/gimage1.png',cat:'Device',heading:'Sydäntek — The Wearable ECG Patch',sub:'Compact · No wires · No sticky electrodes',note:"India's first multimodal wearable ECG device — from 12-lead to HF-ECG from a single patch"},
+  {src:'images/gimage2.png',cat:'Clinical',heading:'Pilot Study — Sri Jayadeva Institute',sub:"Bengaluru's premier cardiac centre",note:'TIFAC request for 60,000 ECGs using Sydäntek'},
+  {src:'images/gimage3.png',cat:'Research',heading:'HF-ECG Waveform Analysis',sub:'High-frequency cardiac signal processing',note:'Ischemia detection in under 1 minute — published in Heart Rhythm 2022'},
+  {src:'images/gimage4.png',cat:'Award',heading:'NXP India Tech Startup Challenge 2023',sub:'Winner — Healthcare Technology Category',note:'One of 13 national awards and grants received by Carditek'},
+  {src:'images/gimage5.png',cat:'Team',heading:'The People Behind Sydäntek',sub:'Engineers, clinicians and innovators',note:'A mission-driven team from Koramangala, Bengaluru'},
+  {src:'images/gimage6.png',cat:'Clinical',heading:'Hospital Deployment — Madras Medical Mission',sub:'Chennai — Active pilot study',note:'Sydäntek deployed across leading cardiac centres in South India'},
+];
+
+let currentLb=0;
+
+function openLightbox(i){
+  currentLb=i;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function updateLightbox(){
+  const d=galleryData[currentLb];
+  document.getElementById('lbImg').src=d.src;
+  document.getElementById('lbCat').textContent=d.cat;
+  document.getElementById('lbTitle').textContent=d.heading;
+  document.getElementById('lbSub').textContent=d.sub;
+  document.getElementById('lbNote').textContent=d.note;
+}
+
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function closeLightboxOutside(e){
+  if(e.target===document.getElementById('lightbox')) closeLightbox();
+}
+
+function lbNav(dir){
+  currentLb=(currentLb+dir+galleryData.length)%galleryData.length;
+  updateLightbox();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowRight') lbNav(1);
+  if(e.key==='ArrowLeft') lbNav(-1);
+});
+
+/* FILTER */
+function filterGallery(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.g-card').forEach(c=>{
+    const show=cat==='all'||c.dataset.cat===cat;
+    c.style.display=show?'':'none';
+  });
+}
+</script>
+</body>
+</html>
